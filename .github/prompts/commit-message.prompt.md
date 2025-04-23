@@ -1,6 +1,20 @@
-Always write commit messages in English language.
-Use the conventional commit format: type(scope): description
+## IMPORTANT: ALWAYS WRITE IN ENGLISH - DO NOT USE ANY OTHER LANGUAGE
+
+Always write commit messages in English language only.
+Never use French or any other language than English.
+
+Use the conventional commit format: 
+- First line: type(scope): summary
+- Second line: blank
+- Third line and beyond: detailed description
+
 Keep the first line under 72 characters.
+Keep detailed description lines under 255 characters.
+
+For detailed descriptions, prefer using bullet points:
+- Use hyphens (-) for each bullet point
+- Focus on the "what" and "why" of the changes, not just the "how"
+- Include relevant context and affected components
 
 Types should be one of the following:
 - feat: A new feature
@@ -16,3 +30,7 @@ Types should be one of the following:
 
 Example:
 feat(auth): implement JWT token validation
+
+- Added JWT validation middleware to secure API endpoints
+- Implemented token refresh mechanism to handle session expiration
+- Updated user service to verify token signatures against user secrets

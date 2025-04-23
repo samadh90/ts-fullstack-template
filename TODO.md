@@ -1,85 +1,80 @@
 # TS Fullstack Template - TODO & Ideas
 
-## 📋 Tasks to Complete
+## 📋 Authentication & User Management Tasks
 
 ### High Priority
-- [ ] Complete user route implementation (profile, update, delete)
-- [ ] Add password reset functionality
-- [ ] Implement email verification for new accounts
-- [ ] Improve API error handling
-- [ ] Add error and confirmation pages
+- [ ] Complete user profile management (update, delete)
+- [ ] Implement password reset functionality
+- [ ] Add email verification flow for new accounts
+- [ ] Improve JWT token security (refresh tokens, token rotation)
+- [ ] Add role-based access control (RBAC)
 
 ### Medium Priority
-- [ ] Implement basic statistics on the dashboard
-- [ ] Add pagination for item lists
-- [ ] Implement real-time notifications
-- [ ] Integrate a logging system for activity tracking
-- [ ] Create chart components for the dashboard
+- [ ] Implement social authentication (Google, GitHub)
+- [ ] Add multi-factor authentication (MFA/2FA)
+- [ ] Create user session management (view active sessions)
+- [ ] Implement account lockout after failed login attempts
+- [ ] Add user profile image upload and management
 
 ### Low Priority
-- [ ] Complete API documentation with Swagger/OpenAPI
-- [ ] Performance optimization
-- [ ] Add light/dark themes
-- [ ] Optimize responsive design for mobile devices
-- [ ] Add unit and end-to-end tests
+- [ ] Implement user preferences system
+- [ ] Add user activity logging
+- [ ] Create admin dashboard for user management
+- [ ] Add self-service account deletion
+- [ ] Implement GDPR compliance features (data export, deletion)
 
-## 🔧 Potential Technical Improvements
+## 🔧 Technical Improvements
 
 ### Backend
-- Add rate limiting system to prevent abuse
-- Implement more robust data validation with Zod or Joi
-- Set up a caching system to optimize frequent queries
-- Migration to PostgreSQL database for production
-- Add an advanced logging system (Winston, Pino)
+- [ ] Add comprehensive input validation with Zod
+- [ ] Implement rate limiting for auth endpoints
+- [ ] Improve error handling and error responses
+- [ ] Set up database migrations for production
+- [ ] Add unit and integration tests for auth flows
+- [ ] Migrate to PostgreSQL for production environment
 
 ### Frontend
-- Integrate Pinia for better global state management
-- Add smooth animations and transitions between pages
-- Implement component lazy loading to optimize performance
-- Set up resource pre-loading strategies
-- Add a user preference management system
+- [ ] Implement form validation and error messages
+- [ ] Add loading states for authentication actions
+- [ ] Improve token storage and security
+- [ ] Create reusable auth-related components
+- [ ] Add client-side route guards based on auth state
+- [ ] Implement remembering user preferences
 
-### Infrastructure
-- Docker configuration for development and production
-- Set up a CI/CD pipeline with GitHub Actions
-- Configure staging and production environments
-- Set up a monitoring system (Sentry, LogRocket)
-- Automate regression tests on each deployment
+### Infrastructure & DevOps
+- [ ] Set up Docker configuration
+- [ ] Implement CI/CD with GitHub Actions
+- [ ] Add security scanning for dependencies
+- [ ] Configure staging and production environments
+- [ ] Set up automated testing on PR
 
-## 🚀 Future Features
+## 🚀 Extension Ideas
 
-### Advanced Authentication
-- Two-factor authentication (2FA)
-- Social network login (OAuth)
-- Multiple session management
-- Suspicious login detection
-- Login history accessible to users
-
-### User Management
-- Advanced roles and permissions system
-- Customizable user profiles
-- Internal messaging between users
-- Email notification system
-- User data import/export
+### Enhanced Authentication Features
+- [ ] Passwordless authentication
+- [ ] OAuth2 provider implementation
+- [ ] Hardware key support (WebAuthn/FIDO2)
+- [ ] Login anomaly detection
+- [ ] Granular permission system
 
 ### User Experience
-- Offline mode with synchronization
-- Guided tour system for new features
-- Keyboard shortcuts for frequent actions
-- User-customizable dashboard
-- Favorites and recent items system
+- [ ] Guided onboarding flow for new users
+- [ ] Account recovery options
+- [ ] Email notification customization
+- [ ] Accessibility improvements for auth forms
+- [ ] Progressive enhancement for auth flows
 
-### Monetization (if applicable)
-- Integration of payment solutions (Stripe, PayPal)
-- Subscription system with different tiers
-- Unlockable premium features
-- Conversion metrics tracking
-- Coupon and promotion system
+### Security Features
+- [ ] CSRF protection
+- [ ] Content Security Policy implementation
+- [ ] Security headers configuration
+- [ ] Audit logging for sensitive operations
+- [ ] Automated security testing
 
-## 📊 Metrics to Track
+## 📊 Documentation Tasks
 
-- User registration and retention rates
-- Page loading times and API performance
-- Error and exception rates
-- User engagement (visited pages, features used)
-- Conversion of defined goals
+- [ ] API documentation with Swagger/OpenAPI
+- [ ] Authentication flow diagrams
+- [ ] Security best practices documentation
+- [ ] User management API examples
+- [ ] Environment setup guide

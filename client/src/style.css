@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-crypto-bg text-white m-0 p-0 min-h-screen;
+}
+
+#app {
+  @apply w-full max-w-7xl mx-auto px-4;
+}
+
+.btn-primary {
+  @apply bg-crypto-primary hover:bg-crypto-secondary text-white font-bold py-2 px-4 rounded transition-colors;
+}
+
+.btn-danger {
+  @apply bg-crypto-red hover:bg-red-700 text-white font-bold py-2 px-4 rounded transition-colors;
+}
+
+.card {
+  @apply bg-crypto-card rounded-lg shadow-lg p-6 mb-4;
+}
+
+.buy {
+  @apply text-crypto-green;
+}
+
+.sell {
+  @apply text-crypto-red;
+}

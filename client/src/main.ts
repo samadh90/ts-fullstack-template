@@ -19,7 +19,11 @@ function initApp() {
     // Detect user language and set it in i18n
     detectUserLanguage()
         .then(detectedLanguage => {
-            i18n.global.locale.value = detectedLanguage
+            if (detectedLanguage === 'fr' || detectedLanguage === 'en') {
+                i18n.global.locale.value = detectedLanguage;
+            } else {
+                console.warn(`Unsupported language detected: ${detectedLanguage}`);
+            }
         })
         .catch(error => {
             console.error('Error initializing language:', error)

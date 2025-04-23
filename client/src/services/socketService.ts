@@ -1,50 +1,74 @@
 import { io, Socket } from 'socket.io-client';
-import type { Trade } from '../types/Trade';
 
 const SOCKET_URL = import.meta.env.VITE_SOCKET_URL || 'http://localhost:3000';
 
-// Énumération des événements Socket.io
+/**
+ * Socket.io event types enumeration
+ */
 export enum SocketEvents {
-  NEW_TRADE = 'new_trade',
-  TRADE_UPDATED = 'trade_updated',
-  TRADE_DELETED = 'trade_deleted',
-  PRICE_UPDATE = 'price_update',
   USER_ACTIVITY = 'user_activity',
   ERROR = 'error'
 }
 
+/**
+ * Service for managing Socket.io connections and event listeners
+ * Provides a unified interface for real-time communication
+ */
 class SocketService {
   private socket: Socket | null = null;
   private listeners: Map<string, Set<Function>> = new Map();
 
-  // Initialiser la connexion Socket.io
+  /**
+   * Initialize Socket.io connection
+   * 
+   * @returns {Socket | null} The socket instance
+   */
   connect() {
     if (!this.socket) {
       this.socket = io(SOCKET_URL);
       this.setupDefaultListeners();
-      console.log('Socket.io: Connecté au serveur');
+      console.log('Socket.io: Connected to server');
     }
     return this.socket;
   }
 
-  // Configurer les écouteurs par défaut
+  /**
+   * Set up default event listeners for connection events
+   * 
+   * @private
+   */
   private setupDefaultListeners() {
     if (!this.socket) return;
 
     this.socket.on('connect', () => {
-      console.log(`Socket.io: Connecté avec ID ${this.socket?.id}`);
+      console.log(`Socket.io: Connected with ID ${this.socket?.id}`);
     });
 
     this.socket.on('disconnect', (reason) => {
-      console.log(`Socket.io: Déconnecté, raison: ${reason}`);
+      console.log(`Socket.io: Disconnected, reason: ${reason}`);
     });
 
     this.socket.on('error', (error) => {
-      console.error('Socket.io: Erreur', error);
+      console.error('Socket.io: Error', error);
     });
   }
 
-  // Ajouter un écouteur d'événement
+  /**
+   * Register an event listener
+   * 
+   * @template T Type of data received from the event
+   * @param {string} event Event name to listen for
+   * @param {function} callback Function to call when the event occurs
+   * @returns {function} Function to remove this specific listener
+   * @example
+   * // Listen for user activity events
+   * const unsubscribe = socketService.on('user_activity', (data) => {
+   *   console.log('User activity:', data);
+   * });
+   * 
+   * // Later, to stop listening:
+   * unsubscribe();
+   */
   on<T>(event: string, callback: (data: T) => void): () => void {
     if (!this.socket) {
       this.connect();
@@ -53,7 +77,7 @@ class SocketService {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, new Set());
       
-      // Configurer l'écouteur réel seulement une fois par type d'événement
+      // Configure the actual listener only once per event type
       this.socket?.on(event, (data: T) => {
         const eventListeners = this.listeners.get(event);
         if (eventListeners) {
@@ -62,10 +86,10 @@ class SocketService {
       });
     }
 
-    // Ajouter le callback à l'ensemble des écouteurs pour cet événement
+    // Add callback to the set of listeners for this event
     this.listeners.get(event)?.add(callback);
     
-    // Retourner une fonction de nettoyage
+    // Return a cleanup function
     return () => {
       const eventListeners = this.listeners.get(event);
       if (eventListeners) {
@@ -74,32 +98,39 @@ class SocketService {
     };
   }
 
-  // Écouteur spécifique pour les nouvelles transactions
-  onNewTrade(callback: (trade: Trade) => void): () => void {
-    return this.on<Trade>(SocketEvents.NEW_TRADE, callback);
+  /**
+   * Emit an event to the server
+   * 
+   * @template T Type of data to send with the event
+   * @param {string} event Event name to emit
+   * @param {T} data Data to send with the event
+   * @returns {boolean} Whether the event was successfully emitted
+   */
+  emit<T>(event: string, data: T): boolean {
+    if (!this.socket) {
+      this.connect();
+    }
+    
+    if (this.socket) {
+      this.socket.emit(event, data);
+      return true;
+    }
+    return false;
   }
 
-  // Écouteur pour les transactions supprimées
-  onTradeDeleted(callback: (data: { id: number }) => void): () => void {
-    return this.on<{ id: number }>(SocketEvents.TRADE_DELETED, callback);
-  }
-
-  // Écouteur pour les mises à jour de prix
-  onPriceUpdate(callback: (data: { asset: string, price: number }) => void): () => void {
-    return this.on<{ asset: string, price: number }>(SocketEvents.PRICE_UPDATE, callback);
-  }
-
-  // Déconnecter Socket.io
+  /**
+   * Disconnect Socket.io connection and clear all listeners
+   */
   disconnect() {
     if (this.socket) {
       this.socket.disconnect();
       this.socket = null;
       this.listeners.clear();
-      console.log('Socket.io: Déconnecté manuellement');
+      console.log('Socket.io: Manually disconnected');
     }
   }
 }
 
-// Exporter une instance singleton du service
+// Export a singleton instance of the service
 export const socketService = new SocketService();
 export default socketService;

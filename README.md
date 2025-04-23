@@ -173,4 +173,8 @@ This project is licensed under the MIT License. See the `LICENSE` file for detai
 
 ## 👥 Authors
 
-- **Samad Hatsijev** - *Developer* - [Your GitHub](https://github.com/samadh90)
+[**Samad Hatsijev**](https://github.com/samadh90)
+
+## 👨‍💻 Contributors
+
+*Want to be on this list? Check our contribution guidelines and submit a pull request!*

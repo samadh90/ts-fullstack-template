@@ -4,24 +4,30 @@ export interface IUserModel {
   Email: string;
   NormalizedEmail: string;
   EmailVerified: boolean;
-  Phone?: string;
+  Phone?: string | null;
   PhoneVerified: boolean;
   F2aEnabled: boolean;
   IsAdmin: boolean;
+  SecurityStamp: string;
+  FirstName?: string | null;
+  LastName?: string | null;
+  DateOfBirth?: Date | null;
+  Country?: string | null;
+  State?: string | null;
+  Street?: string | null;
+  City?: string | null;
+  PostalCode?: string | null;
+  LastLogin?: Date | null;
+  CreatedAt: Date;
+  ModifiedAt?: Date | null;
+  DeletedAt?: Date | null;
+}
+
+export interface IUserCreateRequest {
+  Username: string;
+  Email: string;
   PasswordHash: string;
   SecurityStamp: string;
-  FirstName?: string;
-  LastName?: string;
-  DateOfBirth?: Date;
-  Country?: string;
-  State?: string;
-  Street?: string;
-  City?: string;
-  PostalCode?: string;
-  LastLogin?: Date;
-  CreatedAt: Date;
-  ModifiedAt?: Date;
-  DeletedAt?: Date;
 }
 
 export interface IUserProfileUpdateRequest {

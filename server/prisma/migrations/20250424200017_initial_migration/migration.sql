@@ -15,28 +15,14 @@ CREATE TABLE "User" (
     "LastName" TEXT,
     "DateOfBirth" DATETIME,
     "Country" TEXT,
-    "City" TEXT,
-    "PostalCode" TEXT,
-    "Address" TEXT,
-    "CreatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
-    "ModifiedAt" DATETIME,
-    "DeletedAt" DATETIME,
-    "LastLogin" DATETIME
-);
-
--- CreateTable
-CREATE TABLE "Address" (
-    "ID" INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT,
-    "UserID" INTEGER NOT NULL,
+    "State" TEXT,
     "Street" TEXT,
     "City" TEXT,
-    "State" TEXT,
     "PostalCode" TEXT,
-    "Country" TEXT,
+    "LastLogin" DATETIME,
     "CreatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "ModifiedAt" DATETIME,
-    "DeletedAt" DATETIME,
-    CONSTRAINT "Address_UserID_fkey" FOREIGN KEY ("UserID") REFERENCES "User" ("ID") ON DELETE RESTRICT ON UPDATE CASCADE
+    "DeletedAt" DATETIME
 );
 
 -- CreateIndex

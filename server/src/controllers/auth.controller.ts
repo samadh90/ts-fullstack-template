@@ -21,6 +21,8 @@ import {
     IRefreshTokenResponse
 } from "../interfaces/IAuth";
 
+import { IUserCreateRequest } from "../interfaces/IUser";
+
 export const authController = {
     async login(req: Request, res: Response): Promise<void> {
         try {
@@ -101,12 +103,11 @@ export const authController = {
             const securityStamp = generateSecurityStamp();
             
             // Create user
-            const newUser = {
-                email: Email,
-                username: Username,
-                passwordHash,
-                securityStamp,
-                isAdmin: false
+            const newUser: IUserCreateRequest = {
+                Username,
+                Email,
+                PasswordHash: passwordHash,
+                SecurityStamp: securityStamp
             };
             
             const createdUser = await userModel.createUser(newUser);

@@ -4,7 +4,7 @@
  */
 
 import prisma from '../config/db';
-import { IUserModel } from '../interfaces/IUser';
+import { IUserModel, IUserCreateRequest } from '../interfaces/IUser';
 
 export const userModel = {
   // Get all users
@@ -31,6 +31,7 @@ export const userModel = {
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
+        SecurityStamp: true,
         DeletedAt: true
       },
       where: {
@@ -68,6 +69,7 @@ export const userModel = {
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
+        SecurityStamp: true,
         DeletedAt: true
       }
     });
@@ -102,6 +104,7 @@ export const userModel = {
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
+        SecurityStamp: true,
         DeletedAt: true
       }
     });
@@ -109,7 +112,7 @@ export const userModel = {
   },
 
   // Create a new user
-  async createUser(userData: IUserCreateInput): Promise<IUserModel> {
+  async createUser(userData: IUserCreateRequest): Promise<IUserModel> {
     const normalizedEmail = userData.Email.toUpperCase();
     
     const newUser = await prisma.user.create({
@@ -119,14 +122,10 @@ export const userModel = {
         NormalizedEmail: normalizedEmail,
         PasswordHash: userData.PasswordHash,
         SecurityStamp: userData.SecurityStamp,
-        IsAdmin: userData.IsAdmin || false,
+        IsAdmin: false,
         EmailVerified: false,
         PhoneVerified: false,
         F2aEnabled: false,
-        Phone: userData.Phone,
-        FirstName: userData.FirstName,
-        LastName: userData.LastName,
-        DateOfBirth: userData.DateOfBirth
       },
       select: {
         ID: true,
@@ -149,6 +148,7 @@ export const userModel = {
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
+        SecurityStamp: true,
         DeletedAt: true
       }
     });
@@ -181,6 +181,7 @@ export const userModel = {
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
+        SecurityStamp: true,
         DeletedAt: true
       }
     });
@@ -213,6 +214,7 @@ export const userModel = {
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
+        SecurityStamp: true,
         DeletedAt: true
       }
     });

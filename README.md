@@ -2,7 +2,7 @@
 
 A TypeScript fullstack application template with complete user authentication and management system. A solid foundation to quickly start your web projects with a modern and scalable architecture.
 
-![Version](https://img.shields.io/badge/version-0.1.2-blue.svg)
+![Version](https://img.shields.io/badge/version-0.1.3-blue.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
 
 ## 📋 Included Features

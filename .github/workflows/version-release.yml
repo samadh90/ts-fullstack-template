@@ -6,6 +6,12 @@ on:
       - main
       - master
 
+# Add permissions for the GitHub token
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
 jobs:
   version-and-release:
     runs-on: ubuntu-latest

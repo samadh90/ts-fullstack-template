@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.2](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.1...v0.1.2) (2025-04-24)
+
+
+### Features
+
+* **workflow:** enhance README version badge update with node script for reliability ([af3544c](https://github.com/samadh90/ts-fullstack-template/commit/af3544ca729b4cdea261d2e5e68cf6cbe7c4a147))
+
+
+### Bug Fixes
+
+* **ci:** update version badge in GitHub Actions workflow ([88890b3](https://github.com/samadh90/ts-fullstack-template/commit/88890b385cae6751d9dec81fb27b374445e4e076))
+
+
+### Documentation
+
+* update version badge in README [skip ci] ([b1a2f48](https://github.com/samadh90/ts-fullstack-template/commit/b1a2f4823528b1730f8c8651bb680a91f0a04a0e))
+
 ### 0.1.1 (2025-04-24)
 
 

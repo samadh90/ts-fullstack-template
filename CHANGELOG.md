@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.4](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.3...v0.1.4) (2025-04-24)
+
+
+### Bug Fixes
+
+* **home:** update Home.vue content and translations for clarity and consistency ([cfafe4e](https://github.com/samadh90/ts-fullstack-template/commit/cfafe4e4e5fbaba24aa67b64c4875383748c4d80))
+
+
+### Documentation
+
+* update version badge in README [skip ci] ([11f6c49](https://github.com/samadh90/ts-fullstack-template/commit/11f6c499f2bbcc422e809bf16d6a83d7e8ea9c62))
+
 ### [0.1.3](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.2...v0.1.3) (2025-04-24)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ts-fullstack-template",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "private": true,
   "description": "TypeScript fullstack template with Vue client and Node.js server",
   "scripts": {
@@ -18,7 +18,7 @@
     "@commitlint/config-conventional": "^17.7.0",
     "commitizen": "^4.3.0",
     "concurrently": "^8.2.1",
-    "conventional-changelog-cli": "^4.1.0", 
+    "conventional-changelog-cli": "^4.1.0",
     "cz-conventional-changelog": "^3.3.0",
     "husky": "^8.0.3",
     "standard-version": "^9.5.0"
@@ -30,14 +30,38 @@
   },
   "standard-version": {
     "types": [
-      {"type": "feat", "section": "Features"},
-      {"type": "fix", "section": "Bug Fixes"},
-      {"type": "chore", "hidden": true},
-      {"type": "docs", "section": "Documentation"},
-      {"type": "style", "section": "Styling"},
-      {"type": "refactor", "section": "Refactors"},
-      {"type": "perf", "section": "Performance"},
-      {"type": "test", "section": "Tests"}
+      {
+        "type": "feat",
+        "section": "Features"
+      },
+      {
+        "type": "fix",
+        "section": "Bug Fixes"
+      },
+      {
+        "type": "chore",
+        "hidden": true
+      },
+      {
+        "type": "docs",
+        "section": "Documentation"
+      },
+      {
+        "type": "style",
+        "section": "Styling"
+      },
+      {
+        "type": "refactor",
+        "section": "Refactors"
+      },
+      {
+        "type": "perf",
+        "section": "Performance"
+      },
+      {
+        "type": "test",
+        "section": "Tests"
+      }
     ]
   }
 }

@@ -1,0 +1,5 @@
+#!/bin/sh
+. "$(dirname "$0")/_/husky.sh"
+
+echo "🔍 Checking code before commit..."
+# Removed the npm run lint command as it's not set up yet

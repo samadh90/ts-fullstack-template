@@ -1,0 +1,41 @@
+{
+  "name": "ts-fullstack-template",
+  "version": "0.1.0",
+  "private": true,
+  "description": "TypeScript fullstack template with Vue client and Node.js server",
+  "scripts": {
+    "prepare": "husky install",
+    "commit": "git-cz",
+    "release": "standard-version",
+    "client:dev": "cd client && npm run dev",
+    "server:dev": "cd server && npm run dev",
+    "dev": "concurrently \"npm run client:dev\" \"npm run server:dev\"",
+    "install:all": "npm install && cd client && npm install && cd ../server && npm install"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "commitizen": "^4.3.0",
+    "concurrently": "^8.2.1",
+    "cz-conventional-changelog": "^3.3.0",
+    "husky": "^8.0.3",
+    "standard-version": "^9.5.0"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
+  },
+  "standard-version": {
+    "types": [
+      {"type": "feat", "section": "Features"},
+      {"type": "fix", "section": "Bug Fixes"},
+      {"type": "chore", "hidden": true},
+      {"type": "docs", "section": "Documentation"},
+      {"type": "style", "section": "Styling"},
+      {"type": "refactor", "section": "Refactors"},
+      {"type": "perf", "section": "Performance"},
+      {"type": "test", "section": "Tests"}
+    ]
+  }
+}

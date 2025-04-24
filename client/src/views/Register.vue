@@ -162,7 +162,7 @@
 import { ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { authApi } from '../services/api';
-import type { RegisterCredentials } from '../types/User';
+import type { RegisterForm } from '../types/Auth';
 
 const router = useRouter();
 const username = ref('');
@@ -229,10 +229,10 @@ const handleRegister = async () => {
     successMessage.value = '';
     
     // Récupération des données du formulaire
-    const registerData: RegisterCredentials = {
-      username: username.value,
-      email: email.value,
-      password: password.value
+    const registerData: RegisterForm = {
+      Username: username.value,
+      Email: email.value,
+      Password: password.value
     };
 
     // Appel de l'API pour l'inscription

@@ -15,6 +15,7 @@ A TypeScript fullstack application template with complete user authentication an
 - ✅ Relational database with Prisma ORM
 - ✅ Complete REST API with Express.js
 - ✅ Customizable dashboard
+- ✅ Automatic versioning using conventional commits
 
 ## 🛠️ Technologies Used
 
@@ -42,7 +43,8 @@ A TypeScript fullstack application template with complete user authentication an
 - **Build**: Vite
 - **Code Quality**: ESLint, Prettier
 - **Testing**: Jest (backend), Vitest (frontend)
-- **CI/CD**: GitHub Actions (coming soon)
+- **CI/CD**: GitHub Actions
+- **Versioning**: Conventional Commits, Standard Version
 
 ## 📁 Project Structure
 
@@ -152,6 +154,53 @@ PORT=3000
 ```
 VITE_API_URL=http://localhost:3000
 ```
+
+## 💾 Git Workflow & Versioning
+
+This project uses conventional commits and semantic versioning to automatically manage version numbers.
+
+### Committing Code
+
+Instead of using the standard `git commit` command, use:
+
+```bash
+npm run commit
+```
+
+This will start an interactive promot to create a properly formatted commit message:
+
+1. **Type**: Select the type of change (feat, fix, docs, etc.)
+2. **Scope**: Optional section of the codebase this commit affects
+3. **Description**: Short description of the change
+4. **Body**: Optional longer description
+5. **Breaking Changes**: Does this commit introduce breaking changes?
+6. **Issues**: Optional issues this commit closes
+
+### Commit Types and Version Impact
+
+- `fix`: Patches a bug (increases PATCH version 0.0.x)
+- `feat`: Adds a new feature (increases MINOR version 0.x.0)
+- `feat` with `BREAKING CHANGE`: Major changes (increases MAJOR version x.0.0)
+- `docs`, `style`, `refactor`, `perf`, `test`, `chore`: No version change
+
+### Manual Release
+
+To manually trigger a version update:
+
+```bash
+npm run release
+```
+
+This will:
+1. Analyze commits since last version
+2. Update version number in package.json
+3. Generate/update CHANGELOG.md
+4. Create a git tag for the version
+5. Commit these changes
+
+### Automatic Versioning
+
+A GitHub Actions workflow automatically runs the release process when pushing to the main/master branch.
 
 ## 🔍 Customizing the Template
 

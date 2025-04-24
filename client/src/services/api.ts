@@ -1,5 +1,6 @@
 import axios from 'axios';
-import type { User, UserCredentials, RegisterCredentials, AuthResponse } from '../types/User';
+import type { User, UserCredentials, AuthResponse } from '../types/User';
+import type { RegisterForm } from '../types/Auth';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
@@ -28,11 +29,11 @@ export const authApi = {
   /**
    * Register a new user
    * 
-   * @param {RegisterCredentials} userData - User registration data including email and password
+   * @param {RegisterForm} userData - User registration data including email and password
    * @returns {Promise<AuthResponse>} Authentication response containing user data and token
    * @throws {Error} If registration fails
    */
-  async register(userData: RegisterCredentials): Promise<AuthResponse> {
+  async register(userData: RegisterForm): Promise<AuthResponse> {
     const response = await api.post('/auth/register', userData);
     return response.data;
   },

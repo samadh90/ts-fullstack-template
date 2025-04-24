@@ -36,11 +36,12 @@ jobs:
       - name: Get version from package.json
         id: package-version
         uses: martinbeentjes/npm-get-version-action@v1.3.1
-
+        
       - name: Update README version badge
         run: |
           version=${{ steps.package-version.outputs.current-version }}
-          sed -i "s/version-[0-9]\+\.[0-9]\+\.[0-9]\+-blue/version-$version-blue/" README.md
+          # More robust pattern matching for the version badge
+          perl -i -pe 's|(https://img\.shields\.io/badge/version-)([0-9]+\.[0-9]+\.[0-9]+)(-blue\.svg)|\1'"$version"'\3|g' README.md
           git add README.md
           git commit -m "docs: update version badge in README [skip ci]" || echo "No changes to commit"
       

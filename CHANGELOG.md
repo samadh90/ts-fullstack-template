@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.9](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.8...v0.1.9) (2025-04-25)
+
+
+### Refactors
+
+* **version:** remove .versionrc.js configuration file ([70283c3](https://github.com/samadh90/ts-fullstack-template/commit/70283c3e26a9b37553e1cf402bf22626cc14e1f2))
+
 ### [0.1.8](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.7...v0.1.8) (2025-04-25)
 
 

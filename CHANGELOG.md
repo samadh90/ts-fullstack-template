@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.7](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.6...v0.1.7) (2025-04-25)
+
+
+### Bug Fixes
+
+* **scripts:** enhance postversion script to update README and version files ([01fe5dd](https://github.com/samadh90/ts-fullstack-template/commit/01fe5dd302cce26eaa0a4438edf5f046e656bca6))
+
 ### [0.1.6](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.5...v0.1.6) (2025-04-25)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "ts-fullstack-template",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "private": true,
   "description": "TypeScript fullstack template with Vue client and Node.js server",
   "scripts": {

@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.6](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.5...v0.1.6) (2025-04-25)
+
+
+### Features
+
+* **versioning:** add .versionrc.js for automated versioning and README badge updates ([b13322a](https://github.com/samadh90/ts-fullstack-template/commit/b13322af56efa59403d4934b86397497530e3e10))
+
+
+### Bug Fixes
+
+* **versioning:** implement postbump script to update README badge and version.ts file ([114e1fb](https://github.com/samadh90/ts-fullstack-template/commit/114e1fbb96c9bd5d095908e4887fffcbba7e2d85))
+
+
+### Documentation
+
+* update version badge in README [skip ci] ([1e7e00e](https://github.com/samadh90/ts-fullstack-template/commit/1e7e00e3ad6c2c4f122fb78b45d4a407a8556e1f))
+
 ### [0.1.5](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.4...v0.1.5) (2025-04-25)
 
 

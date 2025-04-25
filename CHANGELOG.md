@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.10](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.9...v0.1.10) (2025-04-25)
+
+
+### Features
+
+* **docs:** add version management guide with semantic versioning details ([f9b6db2](https://github.com/samadh90/ts-fullstack-template/commit/f9b6db232f292bce1c7b86eee2cc67677ebf2fed))
+
 ### [0.1.9](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.8...v0.1.9) (2025-04-25)
 
 

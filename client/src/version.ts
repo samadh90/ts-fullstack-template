@@ -2,5 +2,5 @@
 // Do not modify manually
 
 // Current version from package.json
-export const version = '0.1.9';
+export const version = '0.1.10';
 export const versionDate = new Date().toISOString().split('T')[0];

@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.12](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.11...v0.1.12) (2025-04-26)
+
+
+### Features
+
+* **auth:** enhance user authentication and development tools ([ea73d27](https://github.com/samadh90/ts-fullstack-template/commit/ea73d278857190c8e7b847e8274ab99710324a61))
+
+
+### Bug Fixes
+
+* **auth:** update UserCredentials properties to match API requirements ([2bbbed9](https://github.com/samadh90/ts-fullstack-template/commit/2bbbed97292d6535d86a418d239d3139c0cf81ac))
+
 ### [0.1.11](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.10...v0.1.11) (2025-04-26)
 
 

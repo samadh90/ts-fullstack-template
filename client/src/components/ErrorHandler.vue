@@ -62,15 +62,17 @@
 
 <script setup lang="ts">
 import { ref, onUnmounted } from 'vue';
+import { useI18n } from 'vue-i18n';
 
 // État du modal
 const showModal = ref(false);
 const errorMessage = ref('');
 let errorTimeout: number | null = null;
+const { t } = useI18n();
 
 // Fonction pour afficher une erreur
 const showError = (message: string) => {
-  errorMessage.value = message;
+  errorMessage.value = t(message); // Resolve the translation key
   showModal.value = true;
 
   // Nettoyer tout timeout existant

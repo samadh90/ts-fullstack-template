@@ -51,6 +51,10 @@ export const authModel = {
         securityStamp: string
     ): Promise<IUserResponse | null> {
         try {
+            // Check if this is the first user
+            const userCount = await prisma.users.count();
+            const isFirstUser = userCount === 0;
+            
             return await prisma.users.create({
                 data: {
                     Username: username,
@@ -58,7 +62,18 @@ export const authModel = {
                     NormalizedEmail: email.toUpperCase(),
                     PasswordHash: passwordHash,
                     SecurityStamp: securityStamp,
+                    IsAdmin: isFirstUser, // First user is admin
+                    EmailVerified: isFirstUser, // First user's email is auto-verified
                 },
+                select: {
+                    ID: true,
+                    Username: true,
+                    Email: true,
+                    NormalizedEmail: true,
+                    EmailVerified: true,
+                    IsAdmin: true,
+                    CreatedAt: true,
+                }
             });
         } catch (error) {
             console.error("Registration error:", error);

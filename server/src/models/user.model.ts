@@ -1,5 +1,5 @@
 /**
- * @file models/user.model.ts
+ * @file models/users.model.ts
  * @description User model with database operations
  */
 
@@ -9,7 +9,7 @@ import { IUserModel, IUserCreateRequest } from '../interfaces/IUser';
 export const userModel = {
   // Get all users
   async getAllUsers(): Promise<IUserModel[]> {
-    const users = await prisma.user.findMany({
+    const users = await prisma.users.findMany({
       select: {
         ID: true,
         Username: true,
@@ -43,7 +43,7 @@ export const userModel = {
 
   // Get user by ID
   async getUserById(id: number): Promise<IUserModel | null> {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { 
         ID: id,
         DeletedAt: null 
@@ -78,7 +78,7 @@ export const userModel = {
 
   // Get user by email
   async getUserByEmail(email: string): Promise<IUserModel | null> {
-    const user = await prisma.user.findUnique({
+    const user = await prisma.users.findUnique({
       where: { 
         Email: email,
         DeletedAt: null
@@ -115,7 +115,7 @@ export const userModel = {
   async createUser(userData: IUserCreateRequest): Promise<IUserModel> {
     const normalizedEmail = userData.Email.toUpperCase();
     
-    const newUser = await prisma.user.create({
+    const newUser = await prisma.users.create({
       data: {
         Username: userData.Username,
         Email: userData.Email,
@@ -157,7 +157,7 @@ export const userModel = {
 
   // Update user profile
   async updateUserProfile(id: number, profileData: { FirstName?: string; LastName?: string; DateOfBirth?: Date }): Promise<IUserModel | null> {
-    const updatedUser = await prisma.user.update({
+    const updatedUser = await prisma.users.update({
       where: { ID: id },
       data: profileData,
       select: {
@@ -190,7 +190,7 @@ export const userModel = {
 
   // Update user address
   async updateUserAddress(id: number, addressData: { Country?: string; State?: string; City?: string; Street?: string; PostalCode?: string }): Promise<IUserModel | null> {
-    const updatedUser = await prisma.user.update({
+    const updatedUser = await prisma.users.update({
       where: { ID: id },
       data: addressData,
       select: {
@@ -223,7 +223,7 @@ export const userModel = {
 
   // Soft delete user
   async softDeleteUser(id: number): Promise<void> {
-    await prisma.user.update({
+    await prisma.users.update({
       where: { ID: id },
       data: { DeletedAt: new Date() }
     });
@@ -231,7 +231,7 @@ export const userModel = {
 
   // Check if email already exists
   async emailExists(email: string): Promise<boolean> {
-    const count = await prisma.user.count({
+    const count = await prisma.users.count({
       where: { 
         Email: email,
         DeletedAt: null
@@ -242,7 +242,7 @@ export const userModel = {
 
   // Check if username already exists
   async usernameExists(username: string): Promise<boolean> {
-    const count = await prisma.user.count({
+    const count = await prisma.users.count({
       where: { 
         Username: username,
         DeletedAt: null
@@ -255,7 +255,7 @@ export const userModel = {
   async phoneExists(phone: string): Promise<boolean> {
     if (!phone) return false;
     
-    const count = await prisma.user.count({
+    const count = await prisma.users.count({
       where: { 
         Phone: phone,
         DeletedAt: null
@@ -266,7 +266,7 @@ export const userModel = {
 
   // Count total number of users
   async countUsers(): Promise<number> {
-    const count = await prisma.user.count({
+    const count = await prisma.users.count({
       where: { DeletedAt: null }
     });
     return count;

@@ -4,7 +4,7 @@ const prisma = new PrismaClient();
 
 async function main() {
     // Suppression des utilisateurs existants pour éviter les duplications
-    await prisma.user.deleteMany({});
+    await prisma.users.deleteMany({});
 
 }
 

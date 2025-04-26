@@ -21,8 +21,6 @@ import {
     IRefreshTokenResponse
 } from "../interfaces/IAuth";
 
-import { IUserCreateRequest } from "../interfaces/IUser";
-
 export const authController = {
     async login(req: Request, res: Response): Promise<void> {
         try {
@@ -85,8 +83,8 @@ export const authController = {
             }
             
             // Check if email already exists
-            const existingUser = await userModel.getUserByEmail(Email);
-            if (existingUser) {
+            const existingEmail = await authModel.emailExists(Email);
+            if (existingEmail) {
                 res.status(409).json(formatError("This email is already in use", 409));
                 return;
             }
@@ -103,14 +101,13 @@ export const authController = {
             const securityStamp = generateSecurityStamp();
             
             // Create user
-            const newUser: IUserCreateRequest = {
-                Username,
-                Email,
-                PasswordHash: passwordHash,
-                SecurityStamp: securityStamp
-            };
-            
-            const createdUser = await userModel.createUser(newUser);
+            const createdUser = await authModel.registerUser(Username, Email, passwordHash, securityStamp);
+
+            // Check if user creation was successful
+            if (!createdUser) {
+                res.status(500).json(formatError("User registration failed", 500));
+                return;
+            }
             
             // Token generation
             const token = generateJwtToken({

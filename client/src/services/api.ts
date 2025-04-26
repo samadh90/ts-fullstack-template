@@ -60,8 +60,8 @@ export const authApi = {
     const response = await api.post('/auth/login', credentials);
     
     // Store token if present in the response
-    if (response.data.token) {
-      localStorage.setItem('token', response.data.token);
+    if (response.data.Token) {
+      localStorage.setItem('token', response.data.Token);
     }
     
     return response.data;
@@ -86,8 +86,16 @@ export const authApi = {
    */
   async checkAuth(): Promise<User | null> {
     try {
-      const response = await api.get('/auth/me');
-      return response.data.user;
+      const response = await api.get('/users/me');
+      
+      // Récupération des données utilisateur
+      const userData = response.data.User || response.data;
+      
+      if (!userData) {
+        return null;
+      }
+      
+      return userData;
     } catch (error) {
       localStorage.removeItem('token');
       sessionStorage.removeItem('token');
@@ -171,7 +179,15 @@ export const userApi = {
    */
   async getUserById(id: number): Promise<User> {
     const response = await api.get(`/users/${id}`);
-    return response.data;
+    
+    // Récupération des données utilisateur
+    const userData = response.data.User || response.data;
+    
+    if (!userData) {
+      throw new Error('User not found');
+    }
+    
+    return userData;
   },
 
   /**

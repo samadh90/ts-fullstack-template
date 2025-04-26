@@ -1,9 +1,8 @@
 export default {
     navbar: {
-        cryptoTradeBot: "CryptoTradeBot",
+        title: "Title",
         home: "Home",
         trades: "Trades",
-        dashboard: "Dashboard",
         search: "Search...",
         searchBtn: "Search",
         login: "Login",
@@ -13,7 +12,7 @@ export default {
         logout: "Logout",
     },
     common: {
-        welcome: "Welcome to CryptoTradeBot",
+        welcome: "Welcome to TS Template",
         error: "Error",
         success: "Success",
         loading: "Loading...",
@@ -25,6 +24,18 @@ export default {
         confirm: "Confirm",
         delete: "Delete",
         edit: "Edit",
+    },
+    connection: {
+        connected: "Connection to server established",
+        disconnected: "Connection to server lost",
+        reconnecting: "Reconnecting to server... (Attempt {attempt})",
+        reconnected: "Connection restored",
+        reconnectionFailed: "Failed to reconnect to server",
+        disconnectedMessage: "The connection to the server has been lost. We are trying to reconnect automatically. Please wait or try to reconnect manually.",
+        reconnectingMessage: "Attempting to restore connection to the server. Please wait a moment...",
+        connectedMessage: "Your connection has been successfully restored. You can continue using the application.",
+        tryReconnect: "Try to reconnect",
+        continue: "Continue"
     },
     auth: {
         email: "Email",
@@ -46,7 +57,7 @@ export default {
         loginHere: "Login here",
 
         registerTitle: "Create an Account",
-        registerSubtitle: "Join CryptoTradeBot today",
+        registerSubtitle: "Join template today",
         username: "Username",
         usernamePlaceholder: "Enter your username",
         confirmPasswordPlaceholder: "Confirm your password",
@@ -105,21 +116,6 @@ export default {
         notAuthenticated: "You need to be logged in to access this page",
         errorLoadingData: "Error loading profile data",
     },
-    dashboard: {
-        title: "Dashboard",
-        totalTrades: "Total Trades",
-        profitLoss: "Profit/Loss",
-        portfolio: "Portfolio Value",
-        thisMonth: "this month",
-        performanceChart: "Performance Chart",
-        week: "Week",
-        month: "Month",
-        year: "Year",
-        chartPlaceholder: "Chart will be displayed here",
-        recentTrades: "Recent Trades",
-        viewAllTrades: "View all trades",
-        assets: "Assets",
-    },
     home: {
         subtitle: "Your intelligent cryptocurrency trading platform",
         description: "Track, analyze, and execute your crypto trades in one place.",
@@ -139,7 +135,7 @@ export default {
         cta: {
             title: "Ready to optimize your crypto trading?",
             description:
-                "Create a free account today and discover how CryptoTradeBot can transform your trading experience.",
+                "Create a free account today and discover how template can transform your trading experience.",
             registerButton: "Register for free",
             demoButton: "Explore Demo",
         },

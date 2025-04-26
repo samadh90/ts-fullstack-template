@@ -51,9 +51,6 @@
         <router-link to="/register" class="bg-white hover:bg-gray-100 text-crypto-primary font-bold py-2 px-6 rounded transition-colors">
           Create Account
         </router-link>
-        <router-link to="/dashboard" class="text-white border border-white hover:bg-white hover:bg-opacity-10 font-bold py-2 px-6 rounded transition-colors">
-          Explore Demo
-        </router-link>
       </div>
     </div>
   </div>

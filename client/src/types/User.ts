@@ -1,8 +1,29 @@
+export interface Address {
+  street?: string;
+  city?: string;
+  zipCode?: string;
+  country?: string;
+}
+
 export interface User {
-  id: number;
-  username: string;
-  email: string;
-  createdAt: string;
+  ID: number;
+  Username: string;
+  Email: string;
+  CreatedAt?: string;
+  
+  // Informations personnelles
+  FirstName?: string;
+  LastName?: string;
+  BirthDate?: string;
+  
+  // Adresse
+  Address?: Address;
+  
+  // Informations de contact étendues
+  Phone?: string;
+  EmailVerified?: boolean;
+  PhoneVerified?: boolean;
+  IsAdmin?: boolean;
 }
 
 export interface UserCredentials {
@@ -17,7 +38,7 @@ export interface RegisterCredentials {
 }
 
 export interface AuthResponse {
-  user: User;
-  message: string;
-  token?: string;
+  User: User;
+  Message?: string;
+  Token?: string;
 }

@@ -147,6 +147,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { authApi } from '../services/api';
 import type { UserCredentials } from '../types/User';
+import { eventBus } from '../services/eventBus';
 
 const router = useRouter();
 const route = useRoute();
@@ -181,17 +182,20 @@ const handleLogin = async () => {
     const response = await authApi.login(credentials);
     
     // Stockage du token selon la préférence de l'utilisateur
-    if (response.token) {
+    if (response.Token) {
       if (rememberMe.value) {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.Token);
         sessionStorage.removeItem('token');
       } else {
-        sessionStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.Token);
         localStorage.removeItem('token');
       }
       
+      // Émettre un événement d'authentification spécifique
+      eventBus.emit('auth:login', { user: response.User });
+      
       // Redirection vers le tableau de bord après connexion réussie
-      router.push('/dashboard');
+      router.push('/profile');
     }
   } catch (error: any) {
     // Gestion des erreurs

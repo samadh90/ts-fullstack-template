@@ -163,6 +163,7 @@ import { ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { authApi } from '../services/api';
 import type { RegisterForm } from '../types/Auth';
+import { eventBus } from '../services/eventBus';
 
 const router = useRouter();
 const username = ref('');
@@ -228,7 +229,7 @@ const handleRegister = async () => {
     errorMessage.value = '';
     successMessage.value = '';
     
-    // Récupération des données du formulaire
+    // Récupération des données du formulaire avec format UpperCamelCase
     const registerData: RegisterForm = {
       Username: username.value,
       Email: email.value,
@@ -239,7 +240,7 @@ const handleRegister = async () => {
     const response = await authApi.register(registerData);
     
     // Afficher le message de succès
-    successMessage.value = response.message || "Inscription réussie !";
+    successMessage.value = response.Message || "Inscription réussie !";
     
     // Redirection vers la page de connexion après un délai court
     setTimeout(() => {

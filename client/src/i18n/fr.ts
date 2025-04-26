@@ -1,9 +1,8 @@
 export default {
     navbar: {
-        cryptoTradeBot: "CryptoTradeBot",
+        title: "Title",
         home: "Accueil",
         trades: "Transactions",
-        dashboard: "Tableau de bord",
         search: "Rechercher...",
         searchBtn: "Rechercher",
         login: "Connexion",
@@ -13,7 +12,7 @@ export default {
         logout: "Déconnexion",
     },
     common: {
-        welcome: "Bienvenue sur CryptoTradeBot",
+        welcome: "Bienvenue sur ce template",
         error: "Erreur",
         success: "Succès",
         loading: "Chargement...",
@@ -25,6 +24,18 @@ export default {
         confirm: "Confirmer",
         delete: "Supprimer",
         edit: "Modifier",
+    },
+    connection: {
+        connected: "Connexion au serveur établie",
+        disconnected: "Connexion au serveur perdue",
+        reconnecting: "Reconnexion au serveur... (Tentative {attempt})",
+        reconnected: "Connexion rétablie",
+        reconnectionFailed: "Échec de la reconnexion au serveur",
+        disconnectedMessage: "La connexion au serveur a été perdue. Nous essayons de nous reconnecter automatiquement. Veuillez patienter ou essayer de vous reconnecter manuellement.",
+        reconnectingMessage: "Tentative de rétablissement de la connexion au serveur. Veuillez patienter un moment...",
+        connectedMessage: "Votre connexion a été rétablie avec succès. Vous pouvez continuer à utiliser l'application.",
+        tryReconnect: "Essayer de reconnecter",
+        continue: "Continuer"
     },
     auth: {
         email: "Email",
@@ -46,7 +57,7 @@ export default {
         loginHere: "Se connecter ici",
 
         registerTitle: "Créer un compte",
-        registerSubtitle: "Rejoignez CryptoTradeBot dès aujourd'hui",
+        registerSubtitle: "Rejoignez Template dès aujourd'hui",
         username: "Nom d'utilisateur",
         usernamePlaceholder: "Entrez votre nom d'utilisateur",
         confirmPasswordPlaceholder: "Confirmez votre mot de passe",
@@ -110,21 +121,6 @@ export default {
         notAuthenticated: "Vous devez être connecté pour accéder à cette page",
         errorLoadingData: "Erreur lors du chargement des données du profil",
     },
-    dashboard: {
-        title: "Tableau de bord",
-        totalTrades: "Total des transactions",
-        profitLoss: "Profits/Pertes",
-        portfolio: "Valeur du portefeuille",
-        thisMonth: "ce mois-ci",
-        performanceChart: "Graphique de performance",
-        week: "Semaine",
-        month: "Mois",
-        year: "Année",
-        chartPlaceholder: "Le graphique sera affiché ici",
-        recentTrades: "Transactions récentes",
-        viewAllTrades: "Voir toutes les transactions",
-        assets: "Actifs",
-    },
     home: {
         subtitle: "Votre plateforme de trading de cryptomonnaies intelligente",
         description: "Suivez, analysez et exécutez vos transactions de cryptomonnaies en un seul endroit.",
@@ -146,7 +142,7 @@ export default {
         cta: {
             title: "Prêt à optimiser votre trading de cryptomonnaies?",
             description:
-                "Créez un compte gratuitement et découvrez comment CryptoTradeBot peut transformer votre expérience de trading.",
+                "Créez un compte gratuitement et découvrez comment Template peut transformer votre expérience de trading.",
             registerButton: "S'inscrire gratuitement",
             demoButton: "Explorer la démo",
         },

@@ -325,10 +325,10 @@ onMounted(async () => {
     
     // Remplir les formulaires avec les données utilisateur
     personalInfo.value = {
-      firstName: userDetails.firstName || '',
-      lastName: userDetails.lastName || '',
-      username: userDetails.username || '',
-      birthDate: userDetails.birthDate || ''
+      firstName: userDetails.FirstName || '',
+      lastName: userDetails.LastName || '',
+      username: userDetails.Username || '',
+      birthDate: userDetails.BirthDate || ''
     };
     
     address.value = {
@@ -339,10 +339,10 @@ onMounted(async () => {
     };
     
     contactInfo.value = {
-      email: userDetails.email || '',
-      emailVerified: userDetails.emailVerified || false,
-      phone: userDetails.phone || '',
-      phoneVerified: userDetails.phoneVerified || false
+      email: userDetails.Email || '',
+      emailVerified: userDetails.EmailVerified || false,
+      phone: userDetails.Phone || '',
+      phoneVerified: userDetails.PhoneVerified || false
     };
     
   } catch (error) {

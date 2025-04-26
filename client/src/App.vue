@@ -1,5 +1,8 @@
 <template>
   <div class="min-h-screen bg-crypto-bg">
+    <!-- Notifications de connexion -->
+    <ConnectionStatus />
+    
     <!-- Barre de navigation -->
     <NavBar />
     
@@ -10,7 +13,7 @@
 
     <!-- Pied de page -->
     <footer class="border-t border-gray-700 mt-10 py-6 text-center text-gray-400 text-sm">
-      <div>&copy; {{ new Date().getFullYear() }} CryptoTradeBot - {{ $t('footer.allRightsReserved') }}</div>
+      <div>&copy; {{ new Date().getFullYear() }} Template - {{ $t('footer.allRightsReserved') }}</div>
       <AppVersion />
     </footer>
   </div>
@@ -19,4 +22,12 @@
 <script setup lang="ts">
 import NavBar from './components/NavBar.vue';
 import AppVersion from './components/AppVersion.vue';
+import ConnectionStatus from './components/ConnectionStatus.vue';
+import { onMounted } from 'vue';
+import { socketService } from './services/socketService';
+
+// Initialiser la connexion socket au démarrage de l'application
+onMounted(() => {
+  socketService.connect();
+});
 </script>

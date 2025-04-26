@@ -14,10 +14,6 @@
               :class="[$route.path === '/' ? 'bg-crypto-primary text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
               {{ $t('navbar.home') }}
             </router-link>
-            <!-- Display additional links only if logged in - profile link moved to user menu -->
-            <template v-if="isAuthenticated">
-              <!-- The profile link has been removed from here and left only in the user menu -->
-            </template>
           </div>
         </div>
 
@@ -26,7 +22,7 @@
           <!-- Language selector -->
           <div class="ml-3 relative lang-menu">
             <button @click="langMenuOpen = !langMenuOpen" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
-              {{ locale }}
+              <span :class="['flag-icon', getFlagClass(locale)]" class="w-5 h-5 mr-2"></span>
               <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
               </svg>
@@ -34,10 +30,10 @@
             <!-- Dropdown menu -->
             <div v-show="langMenuOpen" class="origin-top-right absolute right-0 mt-2 w-32 rounded-md shadow-lg bg-crypto-card ring-1 ring-black ring-opacity-5 py-1 focus:outline-none z-10">
               <a href="#" @click.prevent="changeLanguage('fr')" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
-                Français
+                <span class="flag-icon flag-icon-fr w-5 h-5 inline mr-2"></span> Français
               </a>
               <a href="#" @click.prevent="changeLanguage('en')" class="block px-4 py-2 text-sm text-gray-300 hover:bg-gray-700">
-                English
+                <span class="flag-icon flag-icon-gb w-5 h-5 inline mr-2"></span> English
               </a>
             </div>
           </div>
@@ -170,6 +166,15 @@ const changeLanguage = (lang: string) => {
   
   // Close language menu after selection
   langMenuOpen.value = false;
+};
+
+// Function to get flag class based on locale
+const getFlagClass = (locale: string) => {
+  const flags: Record<string, string> = {
+    en: 'fi fi-gb',
+    fr: 'fi fi-fr',
+  };
+  return flags[locale] || 'flag-icon-unknown';
 };
 </script>
 

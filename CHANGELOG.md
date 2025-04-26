@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.11](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.10...v0.1.11) (2025-04-26)
+
+
+### Refactors
+
+* rename user model and update related references ([6bbf0ca](https://github.com/samadh90/ts-fullstack-template/commit/6bbf0caddc94e3c9a3e4396126ad82772ab1e33a))
+
 ### [0.1.10](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.9...v0.1.10) (2025-04-25)
 
 

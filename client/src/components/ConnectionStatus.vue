@@ -90,16 +90,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed, watch, onMounted, onUnmounted } from 'vue';
+import { ref, computed, watch, onUnmounted } from 'vue';
 import { socketService, ConnectionStatus } from '../services/socketService';
 
-// Connect to socket immediately to set up connection monitoring
-onMounted(() => {
-  socketService.connect();
-});
-
 const status = computed(() => socketService.connectionStatus.value);
-// Use a ref instead of a computed to ensure it updates properly
 const currentAttempts = ref(0);
 const showModal = ref(false);
 let connectionTimeout: number | null = null;
@@ -119,40 +113,25 @@ const iconBackgroundClass = computed(() => {
 });
 
 // Watch for status changes
-watch(status, (newStatus, oldStatus) => {
-  // Clear any existing timeout
-  if (connectionTimeout) {
-    window.clearTimeout(connectionTimeout);
-    connectionTimeout = null;
-  }
-
-  // Show modal for disconnected or connecting statuses
+watch(status, (newStatus) => {
   if (newStatus === ConnectionStatus.DISCONNECTED || newStatus === ConnectionStatus.CONNECTING) {
-    showModal.value = true;
-  } 
-  // For connected status, show briefly then dismiss
-  else if (newStatus === ConnectionStatus.CONNECTED && oldStatus !== undefined) {
-    showModal.value = true;
+    // Delay showing the modal to avoid flashing on page load
     connectionTimeout = window.setTimeout(() => {
-      showModal.value = false;
-    }, 2000);
+      showModal.value = true;
+    }, 2000); // 2-second delay
+  } else {
+    // Hide the modal immediately when connected
+    showModal.value = false;
+    if (connectionTimeout) {
+      clearTimeout(connectionTimeout);
+      connectionTimeout = null;
+    }
   }
-}, { immediate: true });
+});
 
-// Setup a deep watcher on socketService's reconnectAttempts directly
-const intervalId = setInterval(() => {
-  // Update current attempts from the socket service
-  if (status.value === ConnectionStatus.CONNECTING) {
-    currentAttempts.value = socketService.reconnectAttempts.value;
-  }
-}, 500);
-
-// Clean up on component unmount
-onUnmounted(() => {
-  if (connectionTimeout) {
-    window.clearTimeout(connectionTimeout);
-  }
-  clearInterval(intervalId);
+// Update reconnect attempts
+watch(() => socketService.reconnectAttempts.value, (attempts) => {
+  currentAttempts.value = attempts;
 });
 
 // Function to manually trigger a reconnection attempt
@@ -166,4 +145,10 @@ const manualReconnect = () => {
 const dismiss = () => {
   showModal.value = false;
 };
+
+onUnmounted(() => {
+  if (connectionTimeout) {
+    clearTimeout(connectionTimeout);
+  }
+});
 </script>

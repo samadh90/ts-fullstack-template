@@ -1,64 +1,64 @@
 import { reactive } from 'vue';
 import { useI18n } from 'vue-i18n';
 
-// Type pour les fonctions de référence des composants
+// Type for component reference functions
 type ErrorHandlerRef = {
   showError: (message: string) => void;
 };
 
-// État réactif pour stocker la référence au composant ErrorHandler
+// Reactive state to store the ErrorHandler component reference
 const state = reactive({
   errorHandlerRef: null as ErrorHandlerRef | null,
 });
 
 /**
- * Enregistre la référence au composant ErrorHandler
- * @param ref - Référence au composant ErrorHandler
+ * Register the reference to the ErrorHandler component
+ * @param ref - Reference to the ErrorHandler component
  */
 const registerErrorHandler = (ref: ErrorHandlerRef) => {
   state.errorHandlerRef = ref;
 };
 
 /**
- * Affiche un message d'erreur dans le modal
- * @param messageKey - Clé de traduction pour le message d'erreur
- * @param params - Paramètres optionnels pour la traduction
+ * Display an error message in the modal
+ * @param messageKey - Translation key for the error message
+ * @param params - Optional parameters for translation
  */
 const showError = (messageKey: string, params?: Record<string, any>) => {
-  // Si le composant ErrorHandler n'est pas encore référencé, on log dans la console
+  // If the ErrorHandler component is not yet referenced, log to the console
   if (!state.errorHandlerRef) {
-    console.error(`ErrorHandler non initialisé. Message: ${messageKey}`);
+    console.error(`ErrorHandler not initialized. Message: ${messageKey}`);
     return;
   }
 
   try {
-    // Obtenir la fonction de traduction
+    // Get the translation function
     const { t } = useI18n();
     
-    // Traduire le message et l'afficher
+    // Translate the message and display it
     const translatedMessage = t(messageKey, params || {});
     state.errorHandlerRef.showError(translatedMessage);
   } catch (error) {
-    // Fallback en cas d'erreur dans la traduction
-    console.error('Erreur lors de la traduction du message d\'erreur:', error);
+    // Fallback in case of error during translation
+    console.error('Error while translating error message:', error);
     state.errorHandlerRef.showError(messageKey);
   }
 };
 
 /**
- * Gère une erreur et affiche un message approprié
- * @param error - L'erreur à traiter
- * @param defaultMessageKey - Clé de traduction pour le message d'erreur par défaut
+ * Handle an error and display an appropriate message
+ * @param error - The error to process
+ * @param defaultMessageKey - Translation key for the default error message
  */
 const handleError = (error: any, defaultMessageKey: string) => {
-  console.error('Erreur détectée:', error);
+  console.error('Error detected:', error);
   
-  // Déterminer le message d'erreur approprié
+  // Determine the appropriate error message
   let messageKey = defaultMessageKey;
   
-  // Si l'erreur est une réponse API avec un message spécifique
+  // If the error is an API response with a specific message
   if (error?.response?.data?.message) {
-    // On pourrait avoir une logique pour mapper les messages d'erreur API aux clés de traduction
+    // We could have logic to map API error messages to translation keys
     showError(defaultMessageKey);
     return;
   }

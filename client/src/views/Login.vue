@@ -146,8 +146,8 @@
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { authApi } from '../services/api';
-import type { LoginForm } from '../types/User';
 import { eventBus } from '../services/eventBus';
+import type { LoginForm } from '../types/Auth';
 
 const router = useRouter();
 const route = useRoute();

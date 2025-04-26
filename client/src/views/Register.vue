@@ -163,7 +163,6 @@ import { ref, computed, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { authApi } from '../services/api';
 import type { RegisterForm } from '../types/Auth';
-import { eventBus } from '../services/eventBus';
 
 const router = useRouter();
 const username = ref('');

@@ -1,4 +1,4 @@
-export interface User {
+export interface UserModel {
   ID: number;
   Username: string;
   Email: string;
@@ -22,21 +22,4 @@ export interface User {
   CreatedAt?: string;
   ModifiedAt?: string;
   DeletedAt?: string;
-}
-
-export interface LoginForm {
-  Email: string;
-  Password: string;
-}
-
-export interface RegisterCredentials {
-  username: string;
-  email: string;
-  password: string;
-}
-
-export interface AuthResponse {
-  User: User;
-  Message?: string;
-  Token?: string;
 }

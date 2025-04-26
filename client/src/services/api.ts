@@ -1,6 +1,6 @@
 import axios from 'axios';
-import type { User, LoginForm, AuthResponse } from '../types/User';
-import type { RegisterForm } from '../types/Auth';
+import type { UserModel } from '../types/User';
+import type { LoginForm, RegisterForm, AuthResponse } from '../types/Auth';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
 
@@ -82,9 +82,9 @@ export const authApi = {
   /**
    * Verify if the current user is authenticated
    * 
-   * @returns {Promise<User | null>} User object if authenticated, null if not
+   * @returns {Promise<UserModel | null>} User object if authenticated, null if not
    */
-  async checkAuth(): Promise<User | null> {
+  async checkAuth(): Promise<UserModel | null> {
     try {
       const response = await api.get('/users/me');
       
@@ -162,10 +162,10 @@ export const userApi = {
   /**
    * Get all users
    * 
-   * @returns {Promise<User[]>} Array of user objects
+   * @returns {Promise<UserModel[]>} Array of user objects
    * @throws {Error} If fetching users fails
    */
-  async getUsers(): Promise<User[]> {
+  async getUsers(): Promise<UserModel[]> {
     const response = await api.get('/users');
     return response.data;
   },
@@ -174,10 +174,10 @@ export const userApi = {
    * Get a specific user by ID
    * 
    * @param {number} id - User ID to fetch
-   * @returns {Promise<User>} User object
+   * @returns {Promise<UserModel>} User object
    * @throws {Error} If user is not found or request fails
    */
-  async getUserById(id: number): Promise<User> {
+  async getUserById(id: number): Promise<UserModel> {
     const response = await api.get(`/users/${id}`);
     
     // Récupération des données utilisateur
@@ -194,10 +194,10 @@ export const userApi = {
    * Create a new user
    * 
    * @param {LoginForm} userData - User data to create
-   * @returns {Promise<User>} Created user object
+   * @returns {Promise<UserModel>} Created user object
    * @throws {Error} If user creation fails
    */
-  async createUser(userData: LoginForm): Promise<User> {
+  async createUser(userData: LoginForm): Promise<UserModel> {
     const response = await api.post('/users', userData);
     return response.data;
   },
@@ -206,10 +206,10 @@ export const userApi = {
    * Update user profile information
    * 
    * @param {any} userData - User profile data to update
-   * @returns {Promise<User>} Updated user object
+   * @returns {Promise<UserModel>} Updated user object
    * @throws {Error} If profile update fails
    */
-  async updateUserProfile(userData: any): Promise<User> {
+  async updateUserProfile(userData: any): Promise<UserModel> {
     const response = await api.put('/users/profile', userData);
     return response.data;
   },

@@ -172,19 +172,21 @@ class SocketService {
       return;
     }
     
+    // Clear any existing reconnection timer
+    if (this.reconnectionTimer) {
+      clearTimeout(this.reconnectionTimer);
+    }
+    
     // Attempt reconnection after a timeout
     this.reconnectionTimer = window.setTimeout(() => {
       if (this.socket) {
         console.log(`Socket.io: Attempting to reconnect...`);
         this.socket.connect();
         
-        // Schedule the next reconnection attempt if this one fails
-        this.reconnectionTimer = window.setTimeout(() => {
-          // If we're still not connected after the attempt, try again
-          if (this.socket && !this.socket.connected) {
-            this.startReconnectionProcess();
-          }
-        }, 3000); // Augmenté à 3 secondes pour vérifier si la connexion a réussi
+        // If we're still not connected after the attempt, try again
+        if (this.socket && !this.socket.connected) {
+          this.startReconnectionProcess();
+        }
       } else {
         // If socket was destroyed, create a new one
         this.socket = null;

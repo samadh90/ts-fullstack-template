@@ -36,3 +36,17 @@ body {
 .sell {
   @apply text-crypto-red;
 }
+
+input {
+  background-color: #ffffff; /* Set input background to white */
+  color: #000000; /* Set input text color to black */
+  border: 1px solid #cccccc; /* Add a light border for better visibility */
+  padding: 0.5rem; /* Add padding for better usability */
+  border-radius: 0.25rem; /* Add slight rounding to corners */
+}
+
+input:focus {
+  outline: none; /* Remove default outline */
+  border-color: #2563eb; /* Highlight border on focus */
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.5); /* Add focus ring */
+}

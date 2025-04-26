@@ -1,6 +1,6 @@
 export default {
     navbar: {
-        title: "Title",
+        title: "TypeScript Fullstack Template",
         home: "Accueil",
         trades: "Transactions",
         search: "Rechercher...",
@@ -12,7 +12,7 @@ export default {
         logout: "Déconnexion",
     },
     common: {
-        welcome: "Bienvenue sur ce template",
+        
         error: "Erreur",
         success: "Succès",
         loading: "Chargement...",
@@ -69,6 +69,33 @@ export default {
 
         registrationSuccessful: "Inscription réussie! Veuillez vérifier votre email pour activer votre compte.",
     },
+    home: {
+        welcome: "Bienvenue sur ce TypeScript Fullstack Template",
+        subtitle: "Votre plateforme de trading de cryptomonnaies intelligente",
+        description: "Suivez, analysez et exécutez vos transactions de cryptomonnaies en un seul endroit.",
+        getStarted: "Commencer",
+        feature1: {
+            title: "Analyse en temps réel",
+            description:
+                "Visualisez les tendances du marché et prenez des décisions éclairées grâce à nos outils d'analyse avancés.",
+        },
+        feature2: {
+            title: "Transactions automatisées",
+            description:
+                "Configurez des règles d'achat et de vente automatiques basées sur vos stratégies personnalisées.",
+        },
+        feature3: {
+            title: "Performances optimisées",
+            description: "Maximisez vos gains grâce à nos algorithmes d'optimisation et nos conseils personnalisés.",
+        },
+        cta: {
+            title: "Prêt à optimiser votre trading de cryptomonnaies?",
+            description:
+                "Créez un compte gratuitement et découvrez comment Template peut transformer votre expérience de trading.",
+            registerButton: "S'inscrire gratuitement",
+            demoButton: "Explorer la démo",
+        },
+    },
     profile: {
         title: "Profil Utilisateur",
         personalInfo: "Informations personnelles",
@@ -117,32 +144,7 @@ export default {
         notAuthenticated: "Vous devez être connecté pour accéder à cette page",
         errorLoadingData: "Erreur lors du chargement des données du profil",
     },
-    home: {
-        subtitle: "Votre plateforme de trading de cryptomonnaies intelligente",
-        description: "Suivez, analysez et exécutez vos transactions de cryptomonnaies en un seul endroit.",
-        getStarted: "Commencer",
-        feature1: {
-            title: "Analyse en temps réel",
-            description:
-                "Visualisez les tendances du marché et prenez des décisions éclairées grâce à nos outils d'analyse avancés.",
-        },
-        feature2: {
-            title: "Transactions automatisées",
-            description:
-                "Configurez des règles d'achat et de vente automatiques basées sur vos stratégies personnalisées.",
-        },
-        feature3: {
-            title: "Performances optimisées",
-            description: "Maximisez vos gains grâce à nos algorithmes d'optimisation et nos conseils personnalisés.",
-        },
-        cta: {
-            title: "Prêt à optimiser votre trading de cryptomonnaies?",
-            description:
-                "Créez un compte gratuitement et découvrez comment Template peut transformer votre expérience de trading.",
-            registerButton: "S'inscrire gratuitement",
-            demoButton: "Explorer la démo",
-        },
-    },
+    
     notFound: {
         title: "Page non trouvée",
         message: "La page que vous recherchez n'existe pas.",

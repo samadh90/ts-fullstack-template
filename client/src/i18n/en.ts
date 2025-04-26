@@ -1,6 +1,6 @@
 export default {
     navbar: {
-        title: "Title",
+        title: "TypeScript Fullstack Template",
         home: "Home",
         trades: "Trades",
         search: "Search...",
@@ -12,7 +12,7 @@ export default {
         logout: "Logout",
     },
     common: {
-        welcome: "Welcome to TS Template",
+        
         error: "Error",
         success: "Success",
         loading: "Loading...",
@@ -69,6 +69,31 @@ export default {
 
         registrationSuccessful: "Registration successful! Please check your email to activate your account.",
     },
+    home: {
+        welcome: "Welcome to TypeScript Fullstack Template",
+        subtitle: "Your intelligent cryptocurrency trading platform",
+        description: "Track, analyze, and execute your crypto trades in one place.",
+        getStarted: "Get Started",
+        feature1: {
+            title: "Real-time Analysis",
+            description: "Visualize market trends and make informed decisions with our advanced analytics tools.",
+        },
+        feature2: {
+            title: "Automated Trading",
+            description: "Set up automatic buy and sell rules based on your custom trading strategies.",
+        },
+        feature3: {
+            title: "Optimized Performance",
+            description: "Maximize your gains with our optimization algorithms and personalized recommendations.",
+        },
+        cta: {
+            title: "Ready to optimize your crypto trading?",
+            description:
+                "Create a free account today and discover how template can transform your trading experience.",
+            registerButton: "Register for free",
+            demoButton: "Explore Demo",
+        },
+    },
     profile: {
         title: "User Profile",
         personalInfo: "Personal Information",
@@ -116,30 +141,6 @@ export default {
 
         notAuthenticated: "You need to be logged in to access this page",
         errorLoadingData: "Error loading profile data",
-    },
-    home: {
-        subtitle: "Your intelligent cryptocurrency trading platform",
-        description: "Track, analyze, and execute your crypto trades in one place.",
-        getStarted: "Get Started",
-        feature1: {
-            title: "Real-time Analysis",
-            description: "Visualize market trends and make informed decisions with our advanced analytics tools.",
-        },
-        feature2: {
-            title: "Automated Trading",
-            description: "Set up automatic buy and sell rules based on your custom trading strategies.",
-        },
-        feature3: {
-            title: "Optimized Performance",
-            description: "Maximize your gains with our optimization algorithms and personalized recommendations.",
-        },
-        cta: {
-            title: "Ready to optimize your crypto trading?",
-            description:
-                "Create a free account today and discover how template can transform your trading experience.",
-            registerButton: "Register for free",
-            demoButton: "Explore Demo",
-        },
     },
     notFound: {
         title: "Page Not Found",

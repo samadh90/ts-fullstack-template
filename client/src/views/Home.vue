@@ -2,7 +2,7 @@
   <div class="flex flex-col items-center justify-start bg-gray-900 text-white">
     <!-- Hero Section -->
     <div class="bg-gradient-to-r from-crypto-primary to-crypto-secondary rounded-lg shadow-lg p-8 mb-10 text-center">
-      <h1 class="text-4xl font-bold mb-4">Welcome to the TypeScript Fullstack Template</h1>
+      <h1 class="text-4xl font-bold mb-4">{{ $t('home.welcome') }}</h1>
       <p class="text-lg mb-6">A modern, scalable foundation for your web applications with Vue 3, Express, and Prisma.</p>
       <router-link to="/register" class="bg-white hover:bg-gray-100 text-crypto-primary font-bold py-2 px-6 rounded transition-colors">
         Get Started

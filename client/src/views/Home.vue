@@ -3,9 +3,9 @@
     <!-- Hero Section -->
     <div class="bg-gradient-to-r from-crypto-primary to-crypto-secondary rounded-lg shadow-lg p-8 mb-10 text-center">
       <h1 class="text-4xl font-bold mb-4">{{ $t('home.welcome') }}</h1>
-      <p class="text-lg mb-6">A modern, scalable foundation for your web applications with Vue 3, Express, and Prisma.</p>
+      <p class="text-lg mb-6">{{ $t('home.intro') }}</p>
       <router-link to="/register" class="bg-white hover:bg-gray-100 text-crypto-primary font-bold py-2 px-6 rounded transition-colors">
-        Get Started
+        {{ $t('home.getStarted') }}
       </router-link>
     </div>
 
@@ -42,21 +42,21 @@
 
     <!-- Game Section -->
     <div class="bg-gray-800 rounded-lg shadow-lg p-8 text-center">
-      <h2 class="text-2xl font-bold mb-4">Guess the Number</h2>
-      <p class="text-lg mb-4">Try to guess the number between 1 and 100!</p>
+      <h2 class="text-2xl font-bold mb-4">{{ $t('home.guessTheNumberTitle') }}</h2>
+      <p class="text-lg mb-4">{{ $t('home.guessTheNumberDescription') }}</p>
 
       <div class="flex flex-col items-center space-y-4">
         <input
           type="number"
           v-model.number="userGuess"
-          placeholder="Enter your guess"
+          :placeholder="$t('home.enterNumber')"
           class="w-64 p-2 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-crypto-primary"
         />
         <button
           @click="checkGuess"
           class="bg-crypto-primary hover:bg-crypto-secondary text-white font-bold py-2 px-4 rounded-md"
         >
-          Submit Guess
+          {{ $t('home.submitGuess') }}
         </button>
 
         <p v-if="message" class="text-lg mt-4">{{ message }}</p>
@@ -66,7 +66,7 @@
         @click="resetGame"
         class="mt-6 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md"
       >
-        Reset Game
+        {{ $t('home.resetGame') }}
       </button>
     </div>
   </div>
@@ -74,23 +74,25 @@
 
 <script setup lang="ts">
 import { ref } from 'vue';
+import { useI18n } from 'vue-i18n';
 
+const { t } = useI18n();
 const randomNumber = ref(Math.floor(Math.random() * 100) + 1);
 const userGuess = ref<number | null>(null);
 const message = ref('');
 
 const checkGuess = () => {
   if (userGuess.value === null) {
-    message.value = 'Please enter a number!';
+    message.value = t('home.enterNumber');
     return;
   }
 
   if (userGuess.value < randomNumber.value) {
-    message.value = 'Too low! Try again.';
+    message.value = t('home.tooLow');
   } else if (userGuess.value > randomNumber.value) {
-    message.value = 'Too high! Try again.';
+    message.value = t('home.tooHigh');
   } else {
-    message.value = 'Congratulations! You guessed the number!';
+    message.value = t('home.congratulations');
   }
 };
 

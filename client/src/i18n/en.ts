@@ -70,29 +70,17 @@ export default {
         registrationSuccessful: "Registration successful! Please check your email to activate your account.",
     },
     home: {
-        welcome: "Welcome to TypeScript Fullstack Template",
-        subtitle: "Your intelligent cryptocurrency trading platform",
-        description: "Track, analyze, and execute your crypto trades in one place.",
+        welcome: "Welcome to the TypeScript Fullstack Template",
+        intro: "A modern, scalable foundation for your web applications with Vue 3, Express, and Prisma.",
         getStarted: "Get Started",
-        feature1: {
-            title: "Real-time Analysis",
-            description: "Visualize market trends and make informed decisions with our advanced analytics tools.",
-        },
-        feature2: {
-            title: "Automated Trading",
-            description: "Set up automatic buy and sell rules based on your custom trading strategies.",
-        },
-        feature3: {
-            title: "Optimized Performance",
-            description: "Maximize your gains with our optimization algorithms and personalized recommendations.",
-        },
-        cta: {
-            title: "Ready to optimize your crypto trading?",
-            description:
-                "Create a free account today and discover how template can transform your trading experience.",
-            registerButton: "Register for free",
-            demoButton: "Explore Demo",
-        },
+        guessTheNumberTitle: "Guess the Number",
+        guessTheNumberDescription: "Try to guess the number between 1 and 100!",
+        submitGuess: "Submit Guess",
+        resetGame: "Reset Game",
+        tooLow: "Too low! Try again.",
+        tooHigh: "Too high! Try again.",
+        congratulations: "Congratulations! You guessed the number!",
+        enterNumber: "Please enter a number!"
     },
     profile: {
         title: "User Profile",

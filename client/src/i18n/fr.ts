@@ -71,30 +71,16 @@ export default {
     },
     home: {
         welcome: "Bienvenue sur ce TypeScript Fullstack Template",
-        subtitle: "Votre plateforme de trading de cryptomonnaies intelligente",
-        description: "Suivez, analysez et exécutez vos transactions de cryptomonnaies en un seul endroit.",
+        intro: "Une base moderne et évolutive pour vos applications web avec Vue 3, Express et Prisma.",
         getStarted: "Commencer",
-        feature1: {
-            title: "Analyse en temps réel",
-            description:
-                "Visualisez les tendances du marché et prenez des décisions éclairées grâce à nos outils d'analyse avancés.",
-        },
-        feature2: {
-            title: "Transactions automatisées",
-            description:
-                "Configurez des règles d'achat et de vente automatiques basées sur vos stratégies personnalisées.",
-        },
-        feature3: {
-            title: "Performances optimisées",
-            description: "Maximisez vos gains grâce à nos algorithmes d'optimisation et nos conseils personnalisés.",
-        },
-        cta: {
-            title: "Prêt à optimiser votre trading de cryptomonnaies?",
-            description:
-                "Créez un compte gratuitement et découvrez comment Template peut transformer votre expérience de trading.",
-            registerButton: "S'inscrire gratuitement",
-            demoButton: "Explorer la démo",
-        },
+        guessTheNumberTitle: "Devinez le nombre",
+        guessTheNumberDescription: "Essayez de deviner le nombre entre 1 et 100!",
+        submitGuess: "Soumettre la supposition",
+        resetGame: "Réinitialiser le jeu",
+        tooLow: "Trop bas! Réessayez.",
+        tooHigh: "Trop haut! Réessayez.",
+        congratulations: "Félicitations! Vous avez deviné le nombre!",
+        enterNumber: "Veuillez entrer un nombre!"
     },
     profile: {
         title: "Profil Utilisateur",

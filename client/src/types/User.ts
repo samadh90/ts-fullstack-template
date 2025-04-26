@@ -1,10 +1,3 @@
-export interface Address {
-  street?: string;
-  city?: string;
-  zipCode?: string;
-  country?: string;
-}
-
 export interface User {
   ID: number;
   Username: string;
@@ -17,7 +10,11 @@ export interface User {
   BirthDate?: string;
   
   // Adresse
-  Address?: Address;
+  Country?: string;
+  State?: string;
+  Street?: string;
+  City?: string;
+  ZipCode?: string;
   
   // Informations de contact étendues
   Phone?: string;

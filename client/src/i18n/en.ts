@@ -83,6 +83,7 @@ export default {
 
         street: "Street",
         city: "City",
+        state: "State", // Added missing state field
         zipCode: "ZIP Code",
         country: "Country",
 
@@ -148,4 +149,55 @@ export default {
     footer: {
         allRightsReserved: "All rights reserved",
     },
+    errors: {
+        general: {
+            default: "An error occurred. Please try again later.",
+            networkError: "Network connection error. Please check your connection.",
+            serverError: "Server error. Please try again later.",
+            unauthorized: "Unauthorized access. Please log in again.",
+            forbidden: "You don't have permission to access this resource.",
+            notFound: "The requested resource was not found.",
+            validationError: "Please check your input data and try again.",
+            timeout: "The request timed out. Please try again.",
+            unexpectedError: "An unexpected error occurred. Please try again."
+        },
+        auth: {
+            invalidCredentials: "Invalid email or password.",
+            accountLocked: "Your account has been locked. Please contact support.",
+            accountNotVerified: "Please verify your email before logging in.",
+            registrationFailed: "Registration failed. Please try again.",
+            emailAlreadyExists: "A user with this email already exists.",
+            usernameAlreadyExists: "This username is already taken.",
+            passwordResetFailed: "Password reset failed. Please try again.",
+            tokenExpired: "Your session has expired. Please log in again.",
+            invalidToken: "Invalid authentication token.",
+            passwordStrength: "Password is too weak. Please use a stronger password."
+        },
+        profile: {
+            updateFailed: "Failed to update your profile. Please try again.",
+            imageSizeTooLarge: "Image size is too large. Maximum size is 5MB.",
+            invalidImageFormat: "Invalid image format. Please use JPG, PNG or GIF.",
+            verificationFailed: "Verification failed. Please try again.",
+            notSaved: "Changes could not be saved. Please try again."
+        },
+        data: {
+            fetchError: "Failed to fetch data. Please try again.",
+            saveError: "Failed to save data. Please try again.",
+            deleteError: "Failed to delete data. Please try again.",
+            uploadError: "Failed to upload file. Please try again.",
+            downloadError: "Failed to download file. Please try again."
+        },
+        form: {
+            requiredField: "This field is required.",
+            invalidEmail: "Please enter a valid email address.",
+            invalidPassword: "Password must be at least 8 characters long.",
+            passwordMismatch: "Passwords do not match.",
+            invalidDate: "Please enter a valid date.",
+            invalidNumber: "Please enter a valid number."
+        },
+        connection: {
+            socketError: "Connection to server failed. Retrying...",
+            apiError: "API request failed. Please try again."
+        }
+    }
 };

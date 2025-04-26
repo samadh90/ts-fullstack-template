@@ -16,7 +16,7 @@ export interface IUserModel {
   State?: string | null;
   Street?: string | null;
   City?: string | null;
-  PostalCode?: string | null;
+  ZipCode?: string | null;
   LastLogin?: Date | null;
   CreatedAt: Date;
   ModifiedAt?: Date | null;
@@ -41,7 +41,7 @@ export interface IUserAddressUpdateRequest {
   State?: string;
   City?: string;
   Street?: string;
-  PostalCode?: string;
+  ZipCode?: string;
 }
 
 export interface IUserEmailUpdateRequest {

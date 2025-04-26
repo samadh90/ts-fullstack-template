@@ -27,7 +27,7 @@ export const userModel = {
         State: true,
         Street: true,
         City: true,
-        PostalCode: true,
+        ZipCode: true,
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
@@ -65,7 +65,7 @@ export const userModel = {
         State: true,
         Street: true,
         City: true,
-        PostalCode: true,
+        ZipCode: true,
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
@@ -100,7 +100,7 @@ export const userModel = {
         State: true,
         Street: true,
         City: true,
-        PostalCode: true,
+        ZipCode: true,
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
@@ -144,7 +144,7 @@ export const userModel = {
         State: true,
         Street: true,
         City: true,
-        PostalCode: true,
+        ZipCode: true,
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
@@ -177,7 +177,7 @@ export const userModel = {
         State: true,
         Street: true,
         City: true,
-        PostalCode: true,
+        ZipCode: true,
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,
@@ -189,7 +189,7 @@ export const userModel = {
   },
 
   // Update user address
-  async updateUserAddress(id: number, addressData: { Country?: string; State?: string; City?: string; Street?: string; PostalCode?: string }): Promise<IUserModel | null> {
+  async updateUserAddress(id: number, addressData: { Country?: string; State?: string; City?: string; Street?: string; ZipCode?: string }): Promise<IUserModel | null> {
     const updatedUser = await prisma.users.update({
       where: { ID: id },
       data: addressData,
@@ -210,7 +210,7 @@ export const userModel = {
         State: true,
         Street: true,
         City: true,
-        PostalCode: true,
+        ZipCode: true,
         LastLogin: true,
         CreatedAt: true,
         ModifiedAt: true,

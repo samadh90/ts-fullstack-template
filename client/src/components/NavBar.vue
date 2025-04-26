@@ -2,28 +2,28 @@
   <nav class="bg-crypto-card shadow-md">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex justify-between h-16">
-        <!-- Logo et navigation principale -->
+        <!-- Logo and main navigation -->
         <div class="flex items-center">
           <router-link to="/" class="flex-shrink-0 flex items-center text-crypto-primary text-xl font-bold">
             {{ $t('navbar.title') }}
           </router-link>
           
-          <!-- Navigation principale (version desktop) -->
+          <!-- Main navigation (desktop version) -->
           <div class="hidden md:ml-10 md:flex md:space-x-4">
             <router-link to="/" class="px-3 py-2 rounded-md text-sm font-medium" 
               :class="[$route.path === '/' ? 'bg-crypto-primary text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white']">
               {{ $t('navbar.home') }}
             </router-link>
-            <!-- Affiche les liens supplémentaires seulement si connecté - lien profil déplacé dans le menu utilisateur -->
+            <!-- Display additional links only if logged in - profile link moved to user menu -->
             <template v-if="isAuthenticated">
-              <!-- Le lien profil a été retiré d'ici et laissé uniquement dans le menu utilisateur -->
+              <!-- The profile link has been removed from here and left only in the user menu -->
             </template>
           </div>
         </div>
 
-        <!-- Menu utilisateur -->
+        <!-- User menu -->
         <div class="flex items-center">
-          <!-- Sélection de langue -->
+          <!-- Language selector -->
           <div class="ml-3 relative lang-menu">
             <button @click="langMenuOpen = !langMenuOpen" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
               {{ locale }}
@@ -42,7 +42,7 @@
             </div>
           </div>
 
-          <!-- Menu utilisateur -->
+          <!-- User menu -->
           <div class="ml-3 relative user-menu" v-if="isAuthenticated">
             <button @click="userMenuOpen = !userMenuOpen" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-crypto-primary">
               <span class="text-white border border-gray-600 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700">
@@ -63,7 +63,7 @@
             </div>
           </div>
 
-          <!-- Bouton de connexion (si non connecté) -->
+          <!-- Login button (if not connected) -->
           <div v-else>
             <router-link to="/login" class="text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
               {{ $t('navbar.login') }}
@@ -92,13 +92,13 @@ const langMenuOpen = ref(false);
 const userName = ref('');
 const userEmail = ref('');
 
-// Fonction pour vérifier si l'utilisateur est connecté
+// Function to check if user is logged in
 const checkAuthentication = () => {
   const token = sessionStorage.getItem('token') || localStorage.getItem('token');
   isAuthenticated.value = !!token;
   
   if (isAuthenticated.value) {
-    // Récupérer les infos utilisateur depuis le localStorage si disponible
+    // Retrieve user information from localStorage if available
     const userDataString = localStorage.getItem('userData');
     if (userDataString) {
       try {
@@ -106,20 +106,20 @@ const checkAuthentication = () => {
         userName.value = userData.username || '';
         userEmail.value = userData.email || '';
       } catch (e) {
-        console.error('Erreur lors du parsing des données utilisateur:', e);
+        console.error('Error parsing user data:', e);
       }
     }
   }
 };
 
-// Surveiller les changements d'authentification via eventBus
+// Watch for authentication changes via eventBus
 watch(() => eventBus.state.authChanged, () => {
   checkAuthentication();
 });
 
-// Fermer les menus déroulants quand on clique ailleurs
+// Close dropdown menus when clicking elsewhere
 const closeMenus = (e: MouseEvent) => {
-  // Ne pas fermer si on clique sur le menu lui-même ou ses boutons
+  // Don't close if clicking on the menu itself or its buttons
   const langMenuElement = document.querySelector('.lang-menu');
   const userMenuElement = document.querySelector('.user-menu');
   
@@ -132,43 +132,43 @@ const closeMenus = (e: MouseEvent) => {
   }
 };
 
-// Vérifier l'authentification au chargement du composant et ajouter le listener pour fermer les menus
+// Check authentication when component loads and add listener to close menus
 onMounted(() => {
   checkAuthentication();
   document.addEventListener('click', closeMenus);
 });
 
-// Nettoyer les écouteurs d'événements lorsque le composant est détruit
+// Clean up event listeners when component is destroyed
 onBeforeUnmount(() => {
   document.removeEventListener('click', closeMenus);
 });
 
-// Fonction de déconnexion
+// Logout function
 const handleLogout = () => {
-  // Supprimer le token d'authentification
+  // Remove authentication token
   localStorage.removeItem('token');
   sessionStorage.removeItem('token');
   localStorage.removeItem('userData');
   
-  // Mettre à jour l'état d'authentification
+  // Update authentication state
   isAuthenticated.value = false;
   userMenuOpen.value = false;
   
-  // Émettre un événement pour informer les autres composants
+  // Emit an event to inform other components
   eventBus.emit('auth:logout');
   
-  // Rediriger vers la page de connexion
+  // Redirect to login page
   router.push('/login');
 };
 
-// Fonction pour changer de langue
+// Function to change language
 const changeLanguage = (lang: string) => {
   locale.value = lang;
   
-  // Enregistrer la préférence de langue en localStorage pour la conserver
+  // Save language preference in localStorage to preserve it
   localStorage.setItem('preferredLanguage', lang);
   
-  // Fermer le menu de langues après la sélection
+  // Close language menu after selection
   langMenuOpen.value = false;
 };
 </script>

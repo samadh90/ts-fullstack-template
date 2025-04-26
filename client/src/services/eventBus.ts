@@ -1,24 +1,24 @@
 import { reactive } from 'vue';
 
-// Types d'événements supportés
+// Supported event types
 export type EventType = 'auth:login' | 'auth:logout' | 'auth:register' | 'connection:status';
 
-// Interface pour les listeners d'événements
+// Interface for event listeners
 interface EventListener {
   (payload?: any): void;
 }
 
-// State réactif pour suivre les changements d'état
+// Reactive state to track state changes
 export const eventBus = {
   state: reactive({
     authChanged: false,
     connectionStatus: true
   }),
   
-  // Map pour stocker les listeners par type d'événement
+  // Map to store listeners by event type
   listeners: new Map<EventType, EventListener[]>(),
   
-  // Fonction pour s'abonner à un événement
+  // Function to subscribe to an event
   on(event: EventType, callback: EventListener): () => void {
     if (!this.listeners.has(event)) {
       this.listeners.set(event, []);
@@ -27,7 +27,7 @@ export const eventBus = {
     const eventListeners = this.listeners.get(event);
     eventListeners?.push(callback);
     
-    // Retourne une fonction pour se désabonner
+    // Returns a function to unsubscribe
     return () => {
       if (eventListeners) {
         const index = eventListeners.indexOf(callback);
@@ -38,13 +38,13 @@ export const eventBus = {
     };
   },
   
-  // Fonction pour émettre un événement
+  // Function to emit an event
   emit(event: EventType, payload?: any) {
     if (this.listeners.has(event)) {
       this.listeners.get(event)?.forEach(callback => callback(payload));
     }
     
-    // Mettre à jour l'état approprié en fonction de l'événement
+    // Update the appropriate state based on the event
     if (event === 'auth:login' || event === 'auth:logout' || event === 'auth:register') {
       this.state.authChanged = !this.state.authChanged;
     } else if (event === 'connection:status') {
@@ -52,7 +52,7 @@ export const eventBus = {
     }
   },
   
-  // Fonction pour émettre un événement de changement d'authentification (version améliorée)
+  // Function to emit an authentication change event (enhanced version)
   emitAuthChanged(eventType: 'auth:login' | 'auth:logout' | 'auth:register' = 'auth:login', payload?: any) {
     this.state.authChanged = !this.state.authChanged;
     this.emit(eventType, payload);

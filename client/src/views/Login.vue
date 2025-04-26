@@ -146,7 +146,7 @@
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { authApi } from '../services/api';
-import type { UserCredentials } from '../types/User';
+import type { LoginForm } from '../types/User';
 import { eventBus } from '../services/eventBus';
 
 const router = useRouter();
@@ -173,7 +173,7 @@ const handleLogin = async () => {
     errorMessage.value = '';
     
     // Prepare login data
-    const credentials: UserCredentials = {
+    const credentials: LoginForm = {
       Email: email.value,
       Password: password.value
     };

@@ -2,28 +2,29 @@ export interface User {
   ID: number;
   Username: string;
   Email: string;
-  CreatedAt?: string;
+  IsAdmin?: boolean;
+  LastLogin?: string;
   
-  // Informations personnelles
   FirstName?: string;
   LastName?: string;
   BirthDate?: string;
   
-  // Adresse
   Country?: string;
   State?: string;
   Street?: string;
   City?: string;
   ZipCode?: string;
   
-  // Informations de contact étendues
   Phone?: string;
   EmailVerified?: boolean;
   PhoneVerified?: boolean;
-  IsAdmin?: boolean;
+
+  CreatedAt?: string;
+  ModifiedAt?: string;
+  DeletedAt?: string;
 }
 
-export interface UserCredentials {
+export interface LoginForm {
   Email: string;
   Password: string;
 }

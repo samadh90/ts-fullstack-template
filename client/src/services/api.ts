@@ -1,5 +1,5 @@
 import axios from 'axios';
-import type { User, UserCredentials, AuthResponse } from '../types/User';
+import type { User, LoginForm, AuthResponse } from '../types/User';
 import type { RegisterForm } from '../types/Auth';
 
 const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:3000';
@@ -41,7 +41,7 @@ export const authApi = {
   /**
    * Authenticate a user with their credentials
    * 
-   * @param {UserCredentials} credentials - User login credentials
+   * @param {LoginForm} credentials - User login credentials
    * @returns {Promise<AuthResponse>} Authentication response containing user data and token
    * @throws {Error} If authentication fails
    * @example
@@ -56,7 +56,7 @@ export const authApi = {
    *   console.error('Login failed:', error);
    * }
    */
-  async login(credentials: UserCredentials): Promise<AuthResponse> {
+  async login(credentials: LoginForm): Promise<AuthResponse> {
     const response = await api.post('/auth/login', credentials);
     
     // Store token if present in the response
@@ -193,11 +193,11 @@ export const userApi = {
   /**
    * Create a new user
    * 
-   * @param {UserCredentials} userData - User data to create
+   * @param {LoginForm} userData - User data to create
    * @returns {Promise<User>} Created user object
    * @throws {Error} If user creation fails
    */
-  async createUser(userData: UserCredentials): Promise<User> {
+  async createUser(userData: LoginForm): Promise<User> {
     const response = await api.post('/users', userData);
     return response.data;
   },

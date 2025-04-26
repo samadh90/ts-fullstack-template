@@ -3,13 +3,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <h1 class="text-3xl font-bold mb-8">{{ $t('profile.title') }}</h1>
       
-      <!-- Alerte pour les messages de succès uniquement -->
+      <!-- Alert for success messages only -->
       <div v-if="successMessage" class="bg-green-700 text-white p-4 mb-6 rounded-md">
         {{ successMessage }}
       </div>
       
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
-        <!-- Bloc 1: Informations personnelles -->
+        <!-- Block 1: Personal information -->
         <div class="bg-crypto-card p-6 rounded-lg shadow-lg">
           <h2 class="text-2xl font-semibold text-crypto-primary mb-4">{{ $t('profile.personalInfo') }}</h2>
           <form @submit.prevent="updatePersonalInfo">
@@ -67,7 +67,7 @@
           </form>
         </div>
         
-        <!-- Bloc 2: Adresse -->
+        <!-- Block 2: Address -->
         <div class="bg-crypto-card p-6 rounded-lg shadow-lg">
           <h2 class="text-2xl font-semibold text-crypto-primary mb-4">{{ $t('profile.address') }}</h2>
           <form @submit.prevent="updateAddress">
@@ -125,7 +125,7 @@
           </form>
         </div>
         
-        <!-- Bloc 3: Informations de contact -->
+        <!-- Block 3: Contact information -->
         <div class="bg-crypto-card p-6 rounded-lg shadow-lg">
           <h2 class="text-2xl font-semibold text-crypto-primary mb-4">{{ $t('profile.contactInfo') }}</h2>
           <form @submit.prevent="updateContactInfo">
@@ -209,7 +209,7 @@
           </form>
         </div>
         
-        <!-- Bloc 4: Changement de mot de passe -->
+        <!-- Block 4: Password change -->
         <div class="bg-crypto-card p-6 rounded-lg shadow-lg">
           <h2 class="text-2xl font-semibold text-crypto-primary mb-4">{{ $t('profile.changePassword') }}</h2>
           <form @submit.prevent="updatePassword">
@@ -271,16 +271,16 @@ import { errorService } from '../services/errorService';
 
 const { t } = useI18n();
 
-// État pour les messages de succès
+// State for success messages
 const successMessage = ref('');
 
-// États pour les indicateurs de chargement
+// States for loading indicators
 const isUpdatingPersonal = ref(false);
 const isUpdatingAddress = ref(false);
 const isUpdatingContact = ref(false);
 const isUpdatingPassword = ref(false);
 
-// États pour les formulaires
+// States for forms
 const personalInfo = ref({
   firstName: '',
   lastName: '',
@@ -309,7 +309,7 @@ const passwordForm = ref({
   confirmPassword: ''
 });
 
-// Charger les données de l'utilisateur
+// Load user data
 onMounted(async () => {
   try {
     const userData = await authApi.checkAuth();
@@ -318,10 +318,10 @@ onMounted(async () => {
       return;
     }
     
-    // Exemple de chargement des données (remplacer par l'appel API réel)
+    // Example of loading data (replace with the real API call)
     const userDetails = await userApi.getUserById(userData.ID);
     
-    // Remplir les formulaires avec les données utilisateur
+    // Fill the forms with user data
     personalInfo.value = {
       firstName: userDetails.FirstName || '',
       lastName: userDetails.LastName || '',
@@ -349,11 +349,11 @@ onMounted(async () => {
   }
 });
 
-// Fonctions de mise à jour
+// Update functions
 const updatePersonalInfo = async () => {
   isUpdatingPersonal.value = true;
   try {
-    // Appel API pour mettre à jour les informations personnelles
+    // API call to update personal information
     await userApi.updateUserProfile({ 
       ...personalInfo.value
     });
@@ -368,7 +368,7 @@ const updatePersonalInfo = async () => {
 const updateAddress = async () => {
   isUpdatingAddress.value = true;
   try {
-    // Appel API pour mettre à jour l'adresse
+    // API call to update address
     await userApi.updateUserAddress({
       ...address.value
     });
@@ -383,7 +383,7 @@ const updateAddress = async () => {
 const updateContactInfo = async () => {
   isUpdatingContact.value = true;
   try {
-    // Appel API pour mettre à jour les informations de contact
+    // API call to update contact information
     await userApi.updateUserContact({
       email: contactInfo.value.email,
       phone: contactInfo.value.phone
@@ -404,13 +404,13 @@ const updatePassword = async () => {
   
   isUpdatingPassword.value = true;
   try {
-    // Appel API pour mettre à jour le mot de passe
+    // API call to update password
     await authApi.changePassword({
       currentPassword: passwordForm.value.currentPassword,
       newPassword: passwordForm.value.newPassword
     });
     
-    // Réinitialiser le formulaire
+    // Reset the form
     passwordForm.value = {
       currentPassword: '',
       newPassword: '',
@@ -425,10 +425,10 @@ const updatePassword = async () => {
   }
 };
 
-// Fonctions de vérification
+// Verification functions
 const resendVerificationEmail = async () => {
   try {
-    // Appel API pour renvoyer l'email de vérification
+    // API call to resend verification email
     await authApi.resendVerificationEmail({ email: contactInfo.value.email });
     showSuccess(t('profile.verificationEmailSent'));
   } catch (error) {
@@ -438,7 +438,7 @@ const resendVerificationEmail = async () => {
 
 const sendPhoneVerification = async () => {
   try {
-    // Appel API pour envoyer le code de vérification par SMS
+    // API call to send verification code via SMS
     await authApi.sendPhoneVerification({ phone: contactInfo.value.phone });
     showSuccess(t('profile.verificationCodeSent'));
   } catch (error) {
@@ -446,7 +446,7 @@ const sendPhoneVerification = async () => {
   }
 };
 
-// Fonction utilitaire pour les messages de succès
+// Utility function for success messages
 const showSuccess = (message: string) => {
   successMessage.value = message;
   setTimeout(() => {
@@ -456,5 +456,5 @@ const showSuccess = (message: string) => {
 </script>
 
 <style scoped>
-/* Styles spécifiques au besoin */
+/* Specific styles as needed */
 </style>

@@ -173,8 +173,8 @@ const handleLogin = async () => {
     
     // Préparation des données de connexion
     const credentials: UserCredentials = {
-      email: email.value,
-      password: password.value
+      Email: email.value,
+      Password: password.value
     };
     
     // Appel de l'API pour la connexion

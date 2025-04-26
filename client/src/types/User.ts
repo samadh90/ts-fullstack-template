@@ -6,8 +6,8 @@ export interface User {
 }
 
 export interface UserCredentials {
-  email: string;
-  password: string;
+  Email: string;
+  Password: string;
 }
 
 export interface RegisterCredentials {

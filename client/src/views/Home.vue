@@ -1,16 +1,15 @@
 <template>
-  <div>
-    <!-- Hero section -->
-    <div class="bg-crypto-card rounded-lg shadow-lg p-8 mb-10">
-      <h1 class="text-4xl font-bold text-white mb-4">{{ $t('common.welcome') }}</h1>
-      <p class="text-xl text-gray-300 mb-6">TypeScript Fullstack Template</p>
-      <p class="text-gray-400 mb-8">A modern, scalable foundation for your web applications with Vue 3, Express, and Prisma.</p>
-      <router-link to="/register" class="btn-primary">
+  <div class="flex flex-col items-center justify-start bg-gray-900 text-white">
+    <!-- Hero Section -->
+    <div class="bg-gradient-to-r from-crypto-primary to-crypto-secondary rounded-lg shadow-lg p-8 mb-10 text-center">
+      <h1 class="text-4xl font-bold mb-4">Welcome to the TypeScript Fullstack Template</h1>
+      <p class="text-lg mb-6">A modern, scalable foundation for your web applications with Vue 3, Express, and Prisma.</p>
+      <router-link to="/register" class="bg-white hover:bg-gray-100 text-crypto-primary font-bold py-2 px-6 rounded transition-colors">
         Get Started
       </router-link>
     </div>
-    
-    <!-- Features section -->
+
+    <!-- Features Section -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-10">
       <div class="bg-crypto-card rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
         <div class="flex items-center justify-center h-14 w-14 rounded-full bg-crypto-primary bg-opacity-20 text-crypto-primary mb-4">
@@ -21,7 +20,6 @@
         <h3 class="text-xl font-bold text-white mb-2">Vue 3 + TypeScript</h3>
         <p class="text-gray-400">Modern frontend with Vue 3 Composition API and strong typing with TypeScript for better developer experience.</p>
       </div>
-      
       <div class="bg-crypto-card rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
         <div class="flex items-center justify-center h-14 w-14 rounded-full bg-crypto-green bg-opacity-20 text-crypto-green mb-4">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -31,7 +29,6 @@
         <h3 class="text-xl font-bold text-white mb-2">Express + Prisma</h3>
         <p class="text-gray-400">Powerful backend with Express.js REST API and Prisma ORM for type-safe database operations.</p>
       </div>
-      
       <div class="bg-crypto-card rounded-lg shadow-lg p-6 transition-transform hover:scale-105">
         <div class="flex items-center justify-center h-14 w-14 rounded-full bg-crypto-secondary bg-opacity-20 text-crypto-secondary mb-4">
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -42,20 +39,73 @@
         <p class="text-gray-400">Complete authentication system, real-time communication via Socket.io, and multi-language support built-in.</p>
       </div>
     </div>
-    
-    <!-- Call to action -->
-    <div class="bg-gradient-to-r from-crypto-primary to-crypto-secondary rounded-lg shadow-lg p-8 text-center">
-      <h2 class="text-2xl font-bold text-white mb-4">Start Building Today</h2>
-      <p class="text-white text-opacity-90 mb-6 max-w-2xl mx-auto">This template includes everything you need to launch your next web application quickly and efficiently.</p>
-      <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-        <router-link to="/register" class="bg-white hover:bg-gray-100 text-crypto-primary font-bold py-2 px-6 rounded transition-colors">
-          Create Account
-        </router-link>
+
+    <!-- Game Section -->
+    <div class="bg-gray-800 rounded-lg shadow-lg p-8 text-center">
+      <h2 class="text-2xl font-bold mb-4">Guess the Number</h2>
+      <p class="text-lg mb-4">Try to guess the number between 1 and 100!</p>
+
+      <div class="flex flex-col items-center space-y-4">
+        <input
+          type="number"
+          v-model.number="userGuess"
+          placeholder="Enter your guess"
+          class="w-64 p-2 text-black rounded-md focus:outline-none focus:ring-2 focus:ring-crypto-primary"
+        />
+        <button
+          @click="checkGuess"
+          class="bg-crypto-primary hover:bg-crypto-secondary text-white font-bold py-2 px-4 rounded-md"
+        >
+          Submit Guess
+        </button>
+
+        <p v-if="message" class="text-lg mt-4">{{ message }}</p>
       </div>
+
+      <button
+        @click="resetGame"
+        class="mt-6 bg-gray-700 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md"
+      >
+        Reset Game
+      </button>
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-// No additional logic needed
+import { ref } from 'vue';
+
+const randomNumber = ref(Math.floor(Math.random() * 100) + 1);
+const userGuess = ref<number | null>(null);
+const message = ref('');
+
+const checkGuess = () => {
+  if (userGuess.value === null) {
+    message.value = 'Please enter a number!';
+    return;
+  }
+
+  if (userGuess.value < randomNumber.value) {
+    message.value = 'Too low! Try again.';
+  } else if (userGuess.value > randomNumber.value) {
+    message.value = 'Too high! Try again.';
+  } else {
+    message.value = 'Congratulations! You guessed the number!';
+  }
+};
+
+const resetGame = () => {
+  randomNumber.value = Math.floor(Math.random() * 100) + 1;
+  userGuess.value = null;
+  message.value = '';
+};
 </script>
+
+<style scoped>
+body {
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+  background-color: #1a202c;
+  color: #fff;
+}
+</style>

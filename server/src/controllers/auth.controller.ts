@@ -42,6 +42,7 @@ export const authController = {
             // Token generation
             const token = generateJwtToken({
                 userId: user.ID,
+                username: user.Username,
                 email: user.Email,
                 isAdmin: user.IsAdmin || false
             });
@@ -112,6 +113,7 @@ export const authController = {
             // Token generation
             const token = generateJwtToken({
                 userId: createdUser.ID,
+                username: createdUser.Username,
                 email: createdUser.Email,
                 isAdmin: createdUser.IsAdmin || false
             });
@@ -173,6 +175,7 @@ export const authController = {
             // Generate new tokens
             const token = generateJwtToken({
                 userId: user.ID,
+                username: user.Username,
                 email: user.Email,
                 isAdmin: user.IsAdmin || false
             });

@@ -12,6 +12,7 @@ import { Request, Response, NextFunction } from "express";
 interface JwtPayload {
     userId: number;
     email: string;
+    username: string;
     isAdmin: boolean;
 }
 

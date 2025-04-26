@@ -40,10 +40,13 @@
 
           <!-- User menu -->
           <div class="ml-3 relative user-menu" v-if="isAuthenticated">
-            <button @click="userMenuOpen = !userMenuOpen" class="flex text-sm rounded-full focus:outline-none focus:ring-2 focus:ring-crypto-primary">
-              <span class="text-white border border-gray-600 rounded-full h-8 w-8 flex items-center justify-center bg-gray-700">
-                {{ userName.charAt(0) || 'U' }}
+            <button @click="userMenuOpen = !userMenuOpen" class="flex items-center text-gray-300 hover:bg-gray-700 hover:text-white px-3 py-2 rounded-md text-sm font-medium">
+              <span class="mr-2 font-semibold text-white bg-gradient-to-r from-crypto-primary to-crypto-secondary px-3 py-1 rounded-lg shadow-lg">
+                {{ userName }}
               </span>
+              <svg class="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+              </svg>
             </button>
             <!-- Dropdown menu -->
             <div v-show="userMenuOpen" class="origin-top-right absolute right-0 mt-2 w-48 rounded-md shadow-lg bg-crypto-card ring-1 ring-black ring-opacity-5 py-1 focus:outline-none z-10">
@@ -79,32 +82,35 @@ import { ref, onMounted, onBeforeUnmount, watch } from 'vue';
 import { useRouter } from 'vue-router';
 import { useI18n } from 'vue-i18n';
 import { eventBus } from '../services/eventBus';
+import { jwtDecode } from 'jwt-decode';
 
 const router = useRouter();
-const { t, locale } = useI18n();
+const { locale } = useI18n();
 const isAuthenticated = ref(false);
 const userMenuOpen = ref(false);
 const langMenuOpen = ref(false);
 const userName = ref('');
-const userEmail = ref('');
+
+// Decode JWT token to extract username
+const decodeToken = () => {
+  const token = localStorage.getItem('token') || sessionStorage.getItem('token');
+  if (token) {
+    try {
+      const decoded: { username: string } = jwtDecode(token);
+      userName.value = decoded.username || '';
+    } catch (error) {
+      console.error('Error decoding token:', error);
+    }
+  }
+};
 
 // Function to check if user is logged in
 const checkAuthentication = () => {
   const token = sessionStorage.getItem('token') || localStorage.getItem('token');
   isAuthenticated.value = !!token;
-  
+
   if (isAuthenticated.value) {
-    // Retrieve user information from localStorage if available
-    const userDataString = localStorage.getItem('userData');
-    if (userDataString) {
-      try {
-        const userData = JSON.parse(userDataString);
-        userName.value = userData.username || '';
-        userEmail.value = userData.email || '';
-      } catch (e) {
-        console.error('Error parsing user data:', e);
-      }
-    }
+    decodeToken();
   }
 };
 

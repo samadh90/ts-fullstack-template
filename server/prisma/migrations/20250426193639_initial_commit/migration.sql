@@ -18,7 +18,7 @@ CREATE TABLE "Users" (
     "State" TEXT,
     "Street" TEXT,
     "City" TEXT,
-    "PostalCode" TEXT,
+    "ZipCode" TEXT,
     "LastLogin" DATETIME,
     "CreatedAt" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "ModifiedAt" DATETIME,

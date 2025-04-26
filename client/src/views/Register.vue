@@ -2,25 +2,25 @@
   <div class="flex justify-center items-center min-h-[80vh]">
     <div class="w-full max-w-md">
       <div class="bg-crypto-card shadow-lg rounded-lg overflow-hidden">
-        <!-- En-tête -->
+        <!-- Header -->
         <div class="p-6 border-b border-gray-700">
           <h2 class="text-2xl font-bold text-white text-center">{{ $t('auth.registerTitle') }}</h2>
           <p class="text-gray-400 text-center mt-1">{{ $t('auth.registerSubtitle') }}</p>
         </div>
 
-        <!-- Formulaire -->
+        <!-- Form -->
         <form @submit.prevent="handleRegister" class="p-6 space-y-6">
-          <!-- Message d'erreur -->
+          <!-- Error message -->
           <div v-if="errorMessage" class="bg-red-900 bg-opacity-40 text-crypto-red p-4 rounded-md text-sm mb-4">
             {{ errorMessage }}
           </div>
           
-          <!-- Message de succès (pour les tests) -->
+          <!-- Success message (for testing) -->
           <div v-if="successMessage" class="bg-green-900 bg-opacity-40 text-green-400 p-4 rounded-md text-sm mb-4">
             {{ successMessage }}
           </div>
           
-          <!-- Nom d'utilisateur -->
+          <!-- Username -->
           <div>
             <label for="username" class="block text-gray-300 text-sm font-medium mb-2">
               {{ $t('auth.username') }}
@@ -52,7 +52,7 @@
             <p v-if="errors.email" class="mt-1 text-sm text-crypto-red">{{ errors.email }}</p>
           </div>
 
-          <!-- Mot de passe -->
+          <!-- Password -->
           <div>
             <label for="password" class="block text-gray-300 text-sm font-medium mb-2">
               {{ $t('auth.password') }}
@@ -86,7 +86,7 @@
             <p v-if="errors.password" class="mt-1 text-sm text-crypto-red">{{ errors.password }}</p>
           </div>
 
-          <!-- Confirmer mot de passe -->
+          <!-- Confirm password -->
           <div>
             <label for="confirmPassword" class="block text-gray-300 text-sm font-medium mb-2">
               {{ $t('auth.confirmPassword') }}
@@ -106,7 +106,7 @@
             </p>
           </div>
 
-          <!-- Conditions d'utilisation -->
+          <!-- Terms of service -->
           <div class="flex items-start">
             <div class="flex items-center h-5">
               <input 
@@ -127,7 +127,7 @@
             </div>
           </div>
 
-          <!-- Bouton d'inscription -->
+          <!-- Registration button -->
           <div>
             <button 
               type="submit" 
@@ -144,7 +144,7 @@
           </div>
         </form>
 
-        <!-- Lien vers la connexion -->
+        <!-- Link to login -->
         <div class="px-6 py-4 bg-gray-800 bg-opacity-40 border-t border-gray-700 text-center">
           <p class="text-sm text-gray-400">
             {{ $t('auth.alreadyAccount') }}
@@ -181,19 +181,19 @@ const errors = ref({
   password: '',
 });
 
-// Validation du mot de passe
+// Password validation
 watch(() => [password.value, confirmPassword.value], () => {
   if (confirmPassword.value && password.value !== confirmPassword.value) {
-    passwordError.value = "Les mots de passe ne correspondent pas";
+    passwordError.value = "Passwords do not match";
   } else {
     passwordError.value = "";
   }
 });
 
-// Validation des champs
+// Field validation
 watch(() => username.value, () => {
   if (username.value.length > 0 && username.value.length < 3) {
-    errors.value.username = "Le nom d'utilisateur doit contenir au moins 3 caractères";
+    errors.value.username = "Username must be at least 3 characters";
   } else {
     errors.value.username = "";
   }
@@ -201,7 +201,7 @@ watch(() => username.value, () => {
 
 watch(() => password.value, () => {
   if (password.value.length > 0 && password.value.length < 8) {
-    errors.value.password = "Le mot de passe doit contenir au moins 8 caractères";
+    errors.value.password = "Password must be at least 8 characters";
   } else {
     errors.value.password = "";
   }
@@ -228,37 +228,37 @@ const handleRegister = async () => {
     errorMessage.value = '';
     successMessage.value = '';
     
-    // Récupération des données du formulaire
+    // Get form data with UpperCamelCase format
     const registerData: RegisterForm = {
       Username: username.value,
       Email: email.value,
       Password: password.value
     };
 
-    // Appel de l'API pour l'inscription
+    // Call API for registration
     const response = await authApi.register(registerData);
     
-    // Afficher le message de succès
-    successMessage.value = response.message || "Inscription réussie !";
+    // Display success message
+    successMessage.value = response.Message || "Registration successful!";
     
-    // Redirection vers la page de connexion après un délai court
+    // Redirect to login page after a short delay
     setTimeout(() => {
       router.push('/login?registered=true');
     }, 1500);
     
   } catch (error: any) {
-    // Gestion des erreurs spécifiques du backend
+    // Handle specific backend errors
     if (error.response && error.response.data && error.response.data.error) {
-      errorMessage.value = error.response.data.error.message || "Une erreur est survenue lors de l'inscription";
+      errorMessage.value = error.response.data.error.message || "An error occurred during registration";
       
-      // Gestion des erreurs de validation spécifiques
+      // Handle specific validation errors
       if (error.response.data.error.message.includes('email')) {
-        errors.value.email = "Cet email est déjà utilisé";
-      } else if (error.response.data.error.message.includes('utilisateur')) {
-        errors.value.username = "Ce nom d'utilisateur est déjà pris";
+        errors.value.email = "This email is already in use";
+      } else if (error.response.data.error.message.includes('username')) {
+        errors.value.username = "This username is already taken";
       }
     } else {
-      errorMessage.value = error.message || "Une erreur de serveur est survenue lors de l'inscription";
+      errorMessage.value = error.message || "A server error occurred during registration";
     }
   } finally {
     loading.value = false;

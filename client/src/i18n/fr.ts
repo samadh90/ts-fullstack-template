@@ -1,9 +1,8 @@
 export default {
     navbar: {
-        cryptoTradeBot: "CryptoTradeBot",
+        title: "Title",
         home: "Accueil",
         trades: "Transactions",
-        dashboard: "Tableau de bord",
         search: "Rechercher...",
         searchBtn: "Rechercher",
         login: "Connexion",
@@ -13,7 +12,7 @@ export default {
         logout: "Déconnexion",
     },
     common: {
-        welcome: "Bienvenue sur CryptoTradeBot",
+        welcome: "Bienvenue sur ce template",
         error: "Erreur",
         success: "Succès",
         loading: "Chargement...",
@@ -25,6 +24,18 @@ export default {
         confirm: "Confirmer",
         delete: "Supprimer",
         edit: "Modifier",
+    },
+    connection: {
+        connected: "Connexion au serveur établie",
+        disconnected: "Connexion au serveur perdue",
+        reconnecting: "Reconnexion au serveur... (Tentative {attempt})",
+        reconnected: "Connexion rétablie",
+        reconnectionFailed: "Échec de la reconnexion au serveur",
+        disconnectedMessage: "La connexion au serveur a été perdue. Nous essayons de nous reconnecter automatiquement. Veuillez patienter ou essayer de vous reconnecter manuellement.",
+        reconnectingMessage: "Tentative de rétablissement de la connexion au serveur. Veuillez patienter un moment...",
+        connectedMessage: "Votre connexion a été rétablie avec succès. Vous pouvez continuer à utiliser l'application.",
+        tryReconnect: "Essayer de reconnecter",
+        continue: "Continuer"
     },
     auth: {
         email: "Email",
@@ -46,7 +57,7 @@ export default {
         loginHere: "Se connecter ici",
 
         registerTitle: "Créer un compte",
-        registerSubtitle: "Rejoignez CryptoTradeBot dès aujourd'hui",
+        registerSubtitle: "Rejoignez Template dès aujourd'hui",
         username: "Nom d'utilisateur",
         usernamePlaceholder: "Entrez votre nom d'utilisateur",
         confirmPasswordPlaceholder: "Confirmez votre mot de passe",
@@ -65,19 +76,17 @@ export default {
         contactInfo: "Informations de contact",
         changePassword: "Changer de mot de passe",
 
-        // Informations personnelles
         firstName: "Prénom",
         lastName: "Nom",
         username: "Nom d'utilisateur",
         birthDate: "Date de naissance",
 
-        // Adresse
         street: "Rue",
         city: "Ville",
+        state: "État", // Added missing state field
         zipCode: "Code postal",
         country: "Pays",
 
-        // Informations de contact
         email: "Email",
         phone: "Téléphone",
         verified: "Vérifié",
@@ -85,13 +94,11 @@ export default {
         resendVerification: "Renvoyer l'email de vérification",
         sendVerificationCode: "Envoyer un code de vérification",
 
-        // Mot de passe
         currentPassword: "Mot de passe actuel",
         newPassword: "Nouveau mot de passe",
         confirmPassword: "Confirmer le mot de passe",
         passwordsDoNotMatch: "Les mots de passe ne correspondent pas",
 
-        // Messages de succès et d'erreur
         personalInfoUpdated: "Informations personnelles mises à jour avec succès",
         addressUpdated: "Adresse mise à jour avec succès",
         contactInfoUpdated: "Informations de contact mises à jour avec succès",
@@ -109,21 +116,6 @@ export default {
 
         notAuthenticated: "Vous devez être connecté pour accéder à cette page",
         errorLoadingData: "Erreur lors du chargement des données du profil",
-    },
-    dashboard: {
-        title: "Tableau de bord",
-        totalTrades: "Total des transactions",
-        profitLoss: "Profits/Pertes",
-        portfolio: "Valeur du portefeuille",
-        thisMonth: "ce mois-ci",
-        performanceChart: "Graphique de performance",
-        week: "Semaine",
-        month: "Mois",
-        year: "Année",
-        chartPlaceholder: "Le graphique sera affiché ici",
-        recentTrades: "Transactions récentes",
-        viewAllTrades: "Voir toutes les transactions",
-        assets: "Actifs",
     },
     home: {
         subtitle: "Votre plateforme de trading de cryptomonnaies intelligente",
@@ -146,7 +138,7 @@ export default {
         cta: {
             title: "Prêt à optimiser votre trading de cryptomonnaies?",
             description:
-                "Créez un compte gratuitement et découvrez comment CryptoTradeBot peut transformer votre expérience de trading.",
+                "Créez un compte gratuitement et découvrez comment Template peut transformer votre expérience de trading.",
             registerButton: "S'inscrire gratuitement",
             demoButton: "Explorer la démo",
         },
@@ -159,4 +151,55 @@ export default {
     footer: {
         allRightsReserved: "Tous droits réservés",
     },
+    errors: {
+        general: {
+            default: "Une erreur est survenue. Veuillez réessayer plus tard.",
+            networkError: "Erreur de connexion réseau. Veuillez vérifier votre connexion.",
+            serverError: "Erreur serveur. Veuillez réessayer plus tard.",
+            unauthorized: "Accès non autorisé. Veuillez vous reconnecter.",
+            forbidden: "Vous n'avez pas les permissions nécessaires pour accéder à cette ressource.",
+            notFound: "La ressource demandée n'a pas été trouvée.",
+            validationError: "Veuillez vérifier vos données et réessayer.",
+            timeout: "La requête a expiré. Veuillez réessayer.",
+            unexpectedError: "Une erreur inattendue est survenue. Veuillez réessayer."
+        },
+        auth: {
+            invalidCredentials: "Email ou mot de passe invalide.",
+            accountLocked: "Votre compte a été verrouillé. Veuillez contacter le support.",
+            accountNotVerified: "Veuillez vérifier votre email avant de vous connecter.",
+            registrationFailed: "L'inscription a échoué. Veuillez réessayer.",
+            emailAlreadyExists: "Un utilisateur avec cet email existe déjà.",
+            usernameAlreadyExists: "Ce nom d'utilisateur est déjà pris.",
+            passwordResetFailed: "La réinitialisation du mot de passe a échoué. Veuillez réessayer.",
+            tokenExpired: "Votre session a expiré. Veuillez vous reconnecter.",
+            invalidToken: "Jeton d'authentification invalide.",
+            passwordStrength: "Le mot de passe est trop faible. Veuillez utiliser un mot de passe plus fort."
+        },
+        profile: {
+            updateFailed: "Échec de la mise à jour de votre profil. Veuillez réessayer.",
+            imageSizeTooLarge: "La taille de l'image est trop grande. La taille maximale est de 5 Mo.",
+            invalidImageFormat: "Format d'image invalide. Veuillez utiliser JPG, PNG ou GIF.",
+            verificationFailed: "La vérification a échoué. Veuillez réessayer.",
+            notSaved: "Les modifications n'ont pas pu être enregistrées. Veuillez réessayer."
+        },
+        data: {
+            fetchError: "Échec de récupération des données. Veuillez réessayer.",
+            saveError: "Échec de l'enregistrement des données. Veuillez réessayer.",
+            deleteError: "Échec de la suppression des données. Veuillez réessayer.",
+            uploadError: "Échec du téléversement du fichier. Veuillez réessayer.",
+            downloadError: "Échec du téléchargement du fichier. Veuillez réessayer."
+        },
+        form: {
+            requiredField: "Ce champ est obligatoire.",
+            invalidEmail: "Veuillez entrer une adresse email valide.",
+            invalidPassword: "Le mot de passe doit comporter au moins 8 caractères.",
+            passwordMismatch: "Les mots de passe ne correspondent pas.",
+            invalidDate: "Veuillez entrer une date valide.",
+            invalidNumber: "Veuillez entrer un nombre valide."
+        },
+        connection: {
+            socketError: "La connexion au serveur a échoué. Nouvelle tentative...",
+            apiError: "La requête API a échoué. Veuillez réessayer."
+        }
+    }
 };

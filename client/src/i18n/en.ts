@@ -1,9 +1,8 @@
 export default {
     navbar: {
-        cryptoTradeBot: "CryptoTradeBot",
+        title: "Title",
         home: "Home",
         trades: "Trades",
-        dashboard: "Dashboard",
         search: "Search...",
         searchBtn: "Search",
         login: "Login",
@@ -13,7 +12,7 @@ export default {
         logout: "Logout",
     },
     common: {
-        welcome: "Welcome to CryptoTradeBot",
+        welcome: "Welcome to TS Template",
         error: "Error",
         success: "Success",
         loading: "Loading...",
@@ -25,6 +24,18 @@ export default {
         confirm: "Confirm",
         delete: "Delete",
         edit: "Edit",
+    },
+    connection: {
+        connected: "Connection to server established",
+        disconnected: "Connection to server lost",
+        reconnecting: "Reconnecting to server... (Attempt {attempt})",
+        reconnected: "Connection restored",
+        reconnectionFailed: "Failed to reconnect to server",
+        disconnectedMessage: "The connection to the server has been lost. We are trying to reconnect automatically. Please wait or try to reconnect manually.",
+        reconnectingMessage: "Attempting to restore connection to the server. Please wait a moment...",
+        connectedMessage: "Your connection has been successfully restored. You can continue using the application.",
+        tryReconnect: "Try to reconnect",
+        continue: "Continue"
     },
     auth: {
         email: "Email",
@@ -46,7 +57,7 @@ export default {
         loginHere: "Login here",
 
         registerTitle: "Create an Account",
-        registerSubtitle: "Join CryptoTradeBot today",
+        registerSubtitle: "Join template today",
         username: "Username",
         usernamePlaceholder: "Enter your username",
         confirmPasswordPlaceholder: "Confirm your password",
@@ -72,6 +83,7 @@ export default {
 
         street: "Street",
         city: "City",
+        state: "State", // Added missing state field
         zipCode: "ZIP Code",
         country: "Country",
 
@@ -105,21 +117,6 @@ export default {
         notAuthenticated: "You need to be logged in to access this page",
         errorLoadingData: "Error loading profile data",
     },
-    dashboard: {
-        title: "Dashboard",
-        totalTrades: "Total Trades",
-        profitLoss: "Profit/Loss",
-        portfolio: "Portfolio Value",
-        thisMonth: "this month",
-        performanceChart: "Performance Chart",
-        week: "Week",
-        month: "Month",
-        year: "Year",
-        chartPlaceholder: "Chart will be displayed here",
-        recentTrades: "Recent Trades",
-        viewAllTrades: "View all trades",
-        assets: "Assets",
-    },
     home: {
         subtitle: "Your intelligent cryptocurrency trading platform",
         description: "Track, analyze, and execute your crypto trades in one place.",
@@ -139,7 +136,7 @@ export default {
         cta: {
             title: "Ready to optimize your crypto trading?",
             description:
-                "Create a free account today and discover how CryptoTradeBot can transform your trading experience.",
+                "Create a free account today and discover how template can transform your trading experience.",
             registerButton: "Register for free",
             demoButton: "Explore Demo",
         },
@@ -152,4 +149,55 @@ export default {
     footer: {
         allRightsReserved: "All rights reserved",
     },
+    errors: {
+        general: {
+            default: "An error occurred. Please try again later.",
+            networkError: "Network connection error. Please check your connection.",
+            serverError: "Server error. Please try again later.",
+            unauthorized: "Unauthorized access. Please log in again.",
+            forbidden: "You don't have permission to access this resource.",
+            notFound: "The requested resource was not found.",
+            validationError: "Please check your input data and try again.",
+            timeout: "The request timed out. Please try again.",
+            unexpectedError: "An unexpected error occurred. Please try again."
+        },
+        auth: {
+            invalidCredentials: "Invalid email or password.",
+            accountLocked: "Your account has been locked. Please contact support.",
+            accountNotVerified: "Please verify your email before logging in.",
+            registrationFailed: "Registration failed. Please try again.",
+            emailAlreadyExists: "A user with this email already exists.",
+            usernameAlreadyExists: "This username is already taken.",
+            passwordResetFailed: "Password reset failed. Please try again.",
+            tokenExpired: "Your session has expired. Please log in again.",
+            invalidToken: "Invalid authentication token.",
+            passwordStrength: "Password is too weak. Please use a stronger password."
+        },
+        profile: {
+            updateFailed: "Failed to update your profile. Please try again.",
+            imageSizeTooLarge: "Image size is too large. Maximum size is 5MB.",
+            invalidImageFormat: "Invalid image format. Please use JPG, PNG or GIF.",
+            verificationFailed: "Verification failed. Please try again.",
+            notSaved: "Changes could not be saved. Please try again."
+        },
+        data: {
+            fetchError: "Failed to fetch data. Please try again.",
+            saveError: "Failed to save data. Please try again.",
+            deleteError: "Failed to delete data. Please try again.",
+            uploadError: "Failed to upload file. Please try again.",
+            downloadError: "Failed to download file. Please try again."
+        },
+        form: {
+            requiredField: "This field is required.",
+            invalidEmail: "Please enter a valid email address.",
+            invalidPassword: "Password must be at least 8 characters long.",
+            passwordMismatch: "Passwords do not match.",
+            invalidDate: "Please enter a valid date.",
+            invalidNumber: "Please enter a valid number."
+        },
+        connection: {
+            socketError: "Connection to server failed. Retrying...",
+            apiError: "API request failed. Please try again."
+        }
+    }
 };

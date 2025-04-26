@@ -2,20 +2,20 @@
   <div class="flex justify-center items-center min-h-[80vh]">
     <div class="w-full max-w-md">
       <div class="bg-crypto-card shadow-lg rounded-lg overflow-hidden">
-        <!-- En-tête -->
+        <!-- Header -->
         <div class="p-6 border-b border-gray-700">
           <h2 class="text-2xl font-bold text-white text-center">{{ $t('auth.loginTitle') }}</h2>
           <p class="text-gray-400 text-center mt-1">{{ $t('auth.loginSubtitle') }}</p>
         </div>
 
-        <!-- Message de succès d'inscription -->
+        <!-- Registration success message -->
         <div v-if="registeredSuccess" class="bg-green-900 bg-opacity-40 mx-6 mt-6 text-green-400 p-4 rounded-md text-sm">
           {{ $t('auth.registrationSuccessful') }}
         </div>
 
-        <!-- Formulaire -->
+        <!-- Form -->
         <form @submit.prevent="handleLogin" class="p-6 space-y-6">
-          <!-- Message d'erreur -->
+          <!-- Error message -->
           <div v-if="errorMessage" class="bg-red-900 bg-opacity-40 text-crypto-red p-4 rounded-md text-sm mb-4">
             {{ errorMessage }}
           </div>
@@ -35,7 +35,7 @@
             />
           </div>
 
-          <!-- Mot de passe -->
+          <!-- Password -->
           <div>
             <div class="flex items-center justify-between mb-2">
               <label for="password" class="block text-gray-300 text-sm font-medium">
@@ -70,7 +70,7 @@
             </div>
           </div>
 
-          <!-- Se souvenir de moi -->
+          <!-- Remember me -->
           <div class="flex items-center justify-between">
             <div class="flex items-center">
               <input 
@@ -85,7 +85,7 @@
             </div>
           </div>
 
-          <!-- Bouton de connexion -->
+          <!-- Login button -->
           <div>
             <button 
               type="submit" 
@@ -101,7 +101,7 @@
           </div>
         </form>
 
-        <!-- Lien vers l'inscription -->
+        <!-- Link to registration -->
         <div class="px-6 py-4 bg-gray-800 bg-opacity-40 border-t border-gray-700 text-center">
           <p class="text-sm text-gray-400">
             {{ $t('auth.noAccount') }}
@@ -112,7 +112,7 @@
         </div>
       </div>
       
-      <!-- Connectez-vous avec -->
+      <!-- Sign in with -->
       <div class="mt-6">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
@@ -146,7 +146,8 @@
 import { ref, onMounted } from 'vue';
 import { useRouter, useRoute } from 'vue-router';
 import { authApi } from '../services/api';
-import type { UserCredentials } from '../types/User';
+import { eventBus } from '../services/eventBus';
+import type { LoginForm } from '../types/Auth';
 
 const router = useRouter();
 const route = useRoute();
@@ -158,7 +159,7 @@ const loading = ref(false);
 const errorMessage = ref('');
 const registeredSuccess = ref(false);
 
-// Vérifie si l'utilisateur vient de s'inscrire avec succès
+// Check if user has just successfully registered
 onMounted(() => {
   const registered = route.query.registered;
   if (registered === 'true') {
@@ -171,34 +172,37 @@ const handleLogin = async () => {
     loading.value = true;
     errorMessage.value = '';
     
-    // Préparation des données de connexion
-    const credentials: UserCredentials = {
+    // Prepare login data
+    const credentials: LoginForm = {
       Email: email.value,
       Password: password.value
     };
     
-    // Appel de l'API pour la connexion
+    // Call API for login
     const response = await authApi.login(credentials);
     
-    // Stockage du token selon la préférence de l'utilisateur
-    if (response.token) {
+    // Store token according to user preference
+    if (response.Token) {
       if (rememberMe.value) {
-        localStorage.setItem('token', response.token);
+        localStorage.setItem('token', response.Token);
         sessionStorage.removeItem('token');
       } else {
-        sessionStorage.setItem('token', response.token);
+        sessionStorage.setItem('token', response.Token);
         localStorage.removeItem('token');
       }
       
-      // Redirection vers le tableau de bord après connexion réussie
-      router.push('/dashboard');
+      // Emit specific authentication event
+      eventBus.emit('auth:login', { user: response.User });
+      
+      // Redirect to dashboard after successful login
+      router.push('/profile');
     }
   } catch (error: any) {
-    // Gestion des erreurs
+    // Error handling
     if (error.response && error.response.data && error.response.data.error) {
-      errorMessage.value = error.response.data.error.message || "Email ou mot de passe incorrect";
+      errorMessage.value = error.response.data.error.message || "Email or password incorrect";
     } else {
-      errorMessage.value = "Une erreur est survenue lors de la connexion";
+      errorMessage.value = "An error occurred during login";
     }
   } finally {
     loading.value = false;

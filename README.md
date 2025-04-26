@@ -14,7 +14,6 @@ A TypeScript fullstack application template with complete user authentication an
 - ✅ Real-time communication via Socket.io
 - ✅ Relational database with Prisma ORM
 - ✅ Complete REST API with Express.js
-- ✅ Customizable dashboard
 - ✅ Automatic versioning using conventional commits
 
 ## 🛠️ Technologies Used
@@ -66,7 +65,6 @@ ts-fullstack-template/
 │       ├── types/              # TypeScript types
 │       │   └── User.ts         # User types
 │       └── views/              # Vue pages
-│           ├── Dashboard.vue   # User dashboard
 │           ├── Home.vue        # Home page
 │           ├── Login.vue       # Login page
 │           ├── NotFound.vue    # 404 page

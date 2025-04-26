@@ -29,7 +29,7 @@ model Users {
   State           String?
   Street          String?
   City            String?
-  PostalCode      String?
+  ZipCode         String?
   LastLogin       DateTime?
   CreatedAt       DateTime  @default(now())
   ModifiedAt      DateTime? @updatedAt

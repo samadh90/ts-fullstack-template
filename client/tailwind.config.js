@@ -9,8 +9,8 @@ export default {
       colors: {
         'crypto-primary': '#2563eb',
         'crypto-secondary': '#1e40af',
-        'crypto-green': '#10b981', // Pour les transactions d'achat
-        'crypto-red': '#ef4444',   // Pour les transactions de vente
+        'crypto-green': '#10b981', // For buy transactions
+        'crypto-red': '#ef4444',   // For sell transactions
         'crypto-bg': '#0f172a',
         'crypto-card': '#1e293b',
       },

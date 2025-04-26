@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.1.13](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.12...v0.1.13) (2025-04-26)
+
+
+### Features
+
+* **client:** rebrand project, remove dashboard, add connection status and error handling components ([#1](https://github.com/samadh90/ts-fullstack-template/issues/1)) ([b6e0a61](https://github.com/samadh90/ts-fullstack-template/commit/b6e0a610d604759571d47cfa6d7dacded0221670))
+
 ### [0.1.12](https://github.com/samadh90/ts-fullstack-template/compare/v0.1.11...v0.1.12) (2025-04-26)
 
 
